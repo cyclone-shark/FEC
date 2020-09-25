@@ -8,6 +8,7 @@ import { changeProductId } from '../reducers/productIdSlice.js';
 
 store.dispatch(changeProductId(4));
 console.log(changeProductId(9));
+console.log('Hello');
 class App extends React.Component {
   render() {
     const { name } = this.props;
