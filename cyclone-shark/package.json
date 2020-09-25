@@ -12,7 +12,8 @@
     "build-dev": "webpack -d -w --mode development",
     "build-prod": "webpack -p --mode production",
     "start": "webpack-dev-server --hot --mode development",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ./client/src"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
