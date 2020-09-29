@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 // import { configureStore, createSlice } from '@reduxjs/toolkit';
 import store from '../store.js';
@@ -15,7 +16,6 @@ console.log(store.getState());
 store.dispatch(changeProductStyle(4));
 console.log(changeProductStyle(9));
 console.log(store.getState().productId);
-console.log(store.getState());
 
 class App extends React.Component {
   render() {
