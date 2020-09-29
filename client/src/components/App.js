@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 // import { configureStore, createSlice } from '@reduxjs/toolkit';
 import store from '../store.js';
-import { changeProductId } from '../reducers/productIdSlice.js';
+import { changeProductId } from '../reducers/productId.js';
 import { changeProductStyle } from '../reducers/productStyle.js';
 import MainView from './overview/left_side/MainView.jsx';
 
