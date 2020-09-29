@@ -11,7 +11,6 @@ var getProductData = (productId) => {
     })
     .then((data) => {
       _.extend(obj, data);
-      console.log(obj);
       return obj;
     })
     .catch((err) => {
