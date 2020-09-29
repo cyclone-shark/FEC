@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import productIdReducer from './reducers/productId';
-import productStyleReducer from './reducers/productStyle';
+import productStyleReducer from './reducers/styleId';
 import styleSizeReducer from './reducers/styleSize';
 import sizeQuantityReducer from './reducers/styleSizeQuantity';
 import skuReducer from './reducers/sku';

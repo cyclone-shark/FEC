@@ -426,7 +426,7 @@ var temp = {
   ],
 };
 
-var getStyleData = (productId) => {
+var getProductData = (productId) => {
   //var data = api.getProductStyles(productId);
   var data = temp.results;
   var styleData = {};
@@ -436,6 +436,10 @@ var getStyleData = (productId) => {
   return styleData;
 };
 
-var obj = getStyleData(0);
-console.log(obj);
-console.log(obj[11]);
+var getStyleData = (productData, style_id) => {
+  return productData[style_id];
+};
+
+var obj = getProductData(0);
+
+console.log(getStyleData(obj, 11));
