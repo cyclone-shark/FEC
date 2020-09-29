@@ -10,9 +10,6 @@ const productIdSlice = createSlice({
       return id;
     },
   },
-  prepare(id) {
-    return { payload: id };
-  },
 });
 
 export const { changeProductId } = productIdSlice.actions;

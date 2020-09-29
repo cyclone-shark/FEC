@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-//combine reducers here
 const productStyleSlice = createSlice({
   name: 'selectedProductStyle',
   initialState: 2,
@@ -10,9 +9,6 @@ const productStyleSlice = createSlice({
       return id;
     },
   },
-  // prepare(id) {
-  //   return { payload: id };
-  // },
 });
 
 export const { changeProductStyle } = productStyleSlice.actions;

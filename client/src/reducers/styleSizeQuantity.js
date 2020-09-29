@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-//combine reducers here
 const sizeQuantitySlice = createSlice({
   name: 'selectedQuantity',
   initialState: 1,
