@@ -11,5 +11,5 @@ const productDataSlice = createSlice({
   },
 });
 
-export const { changeProductData } = changeProductData.actions;
+export const { changeProductData } = productDataSlice.actions;
 export default productDataSlice.reducer;

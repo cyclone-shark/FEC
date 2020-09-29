@@ -3,22 +3,17 @@ import { useSelector } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 // import { configureStore, createSlice } from '@reduxjs/toolkit';
 import store from '../store.js';
-import { changeProductId } from '../reducers/productId.js';
-import { changeProductStyle } from '../reducers/styleId.js';
 import MainView from './overview/left_side/MainView.jsx';
 import StyleList from './overview/right_side/StyleList.jsx';
+import { getProductData } from '../../../helpers/productHelpers.js';
 // store.dispatch(changeProductId(4));
 // console.log(store.getState());
 // console.log(changeProductId(9));
 // console.log(store.getState());
 
-console.log(store.getState());
-store.dispatch(changeProductStyle(4));
-console.log(changeProductStyle(9));
-console.log(store.getState().productId);
-
 class App extends React.Component {
   render() {
+    console.log(getProductData(1));
     const { name } = this.props;
     return (
       <>
