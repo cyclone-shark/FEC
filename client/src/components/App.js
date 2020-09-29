@@ -6,7 +6,7 @@ import store from '../store.js';
 import { changeProductId } from '../reducers/productId.js';
 import { changeProductStyle } from '../reducers/styleId.js';
 import MainView from './overview/left_side/MainView.jsx';
-
+import StyleList from './overview/right_side/StyleList.jsx';
 // store.dispatch(changeProductId(4));
 // console.log(store.getState());
 // console.log(changeProductId(9));
@@ -24,6 +24,7 @@ class App extends React.Component {
       <>
         <h1>Hello {name}</h1>
         <MainView />
+        <StyleList />
       </>
     );
   }
