@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { changeProductQuantity } from '../../../reducers/styleSizeQuantity.js';
 import store from '../../../store.js';
 
 var QuantitySelector = (props) => {
@@ -12,8 +13,18 @@ var QuantitySelector = (props) => {
     quantityRange.push(i);
   }
 
+  var updateQuantity = (e) => {
+    store.dispatch(changeProductQuantity(e.target.value));
+  };
+
   return (
-    <select name='quantity' id='quantity'>
+    <select
+      name='quantity'
+      id='quantity'
+      onChange={(e) => {
+        updateQuantity(e);
+      }}
+    >
       {quantityRange.map((quantity) => {
         return (
           <option key={'quantity ' + quantity} value={quantity}>

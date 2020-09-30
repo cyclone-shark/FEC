@@ -11,5 +11,5 @@ const skuSlice = createSlice({
   },
 });
 
-export const { changeStyleSize } = skuSlice.actions;
+export const { changeSKU } = skuSlice.actions;
 export default skuSlice.reducer;

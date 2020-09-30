@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const sizeQuantitySlice = createSlice({
   name: 'selectedQuantity',
-  initialState: 1,
+  initialState: 0,
   reducers: {
     changeProductQuantity(state, action) {
       const quantity = action.payload;

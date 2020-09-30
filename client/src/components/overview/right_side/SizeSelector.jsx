@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { changeStyleSize } from '../../../reducers/styleSize.js';
+import { changeSKU } from '../../../reducers/sku.js';
 import { useSelector } from 'react-redux';
 import QuantitySelector from './QuantitySelector';
 import store from '../../../store.js';
 
 var SizeSelector = (props) => {
-  var sizeList = [];
+  var skuList = [];
   var sizeQuantity = {};
-  var skuObj = {};
   var styleData = {};
+  var skusObj = {};
   var selectedStyle = useSelector((state) => state.productStyle);
 
   if (props.data) {
@@ -21,29 +22,39 @@ var SizeSelector = (props) => {
     var skus = styleData.skus;
 
     for (var key in skus) {
-      sizeList.push(skus[key].size);
-      sizeQuantity[skus[key].size] = skus[key].quantity;
+      var skuObj = {};
       skuObj[key] = skus[key].size;
+      skusObj[skus[key].size] = key;
+      skuList.push(skuObj);
+      sizeQuantity[skus[key].size] = skus[key].quantity;
     }
   }
 
+  var getSku = (skus, size) => {
+    return skus[size];
+  };
+
   var updateSize = (e) => {
+    var sku = getSku(skusObj, e.target.value);
+    store.dispatch(changeSKU(sku));
     store.dispatch(changeStyleSize(e.target.value));
   };
 
   return (
     <React.Fragment>
       <select
-        name='size'
         id='size'
         onChange={(e) => {
           updateSize(e);
         }}
       >
-        {sizeList.map((size) => {
+        {skuList.map((sku) => {
           return (
-            <option key={size} value={size}>
-              {size}
+            <option
+              name={'sku' + Object.keys(sku)[0]}
+              value={Object.values(sku)[0]}
+            >
+              {Object.values(sku)[0]}
             </option>
           );
         })}

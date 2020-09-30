@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const styleSizeSlice = createSlice({
   name: 'selectedSize',
-  initialState: 'S',
+  initialState: 'XS',
   reducers: {
     changeStyleSize(state, action) {
       const size = action.payload;
