@@ -1,19 +1,23 @@
-//import api from './apiHelpers.js';
+import { getProduct, getProductStyles } from './apiHelpers.js';
+import _ from 'lodash';
 
 var getProductData = (productId) => {
-  //var data = api.getProductStyles(productId);
-  var data = temp.results;
-  var styleData = {};
-  for (var i = 0; i < data.length; i++) {
-    styleData[data[i].style_id] = data[i];
-  }
-  return styleData;
+  var obj = {};
+
+  return getProduct(productId)
+    .then((data) => {
+      _.extend(obj, data);
+      return getProductStyles(productId);
+    })
+    .then((data) => {
+      _.extend(obj, data);
+      return obj;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 };
 
-var getStyleData = (productData, style_id) => {
-  return productData[style_id];
-};
+var getStyleData = (productData, style_id) => {};
 
-var obj = getProductData(0);
-
-console.log(getStyleData(obj, 11));
+export { getProductData };

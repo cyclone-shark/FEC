@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import example from '../../../exampleData/product_data.json';
 
 const productDataSlice = createSlice({
   name: 'productData',
@@ -11,5 +12,5 @@ const productDataSlice = createSlice({
   },
 });
 
-export const { changeProductData } = changeProductData.actions;
+export const { changeProductData } = productDataSlice.actions;
 export default productDataSlice.reducer;
