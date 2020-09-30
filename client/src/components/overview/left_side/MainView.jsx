@@ -4,7 +4,7 @@ import store from '../../../store.js';
 
 var MainView = () => {
   console.log(useSelector((state) => state.productId));
-  console.log(useSelector((state) => state.productData));
+  console.log(useSelector((state) => state.productData.results));
   return <div>{store.id}</div>;
 };
 

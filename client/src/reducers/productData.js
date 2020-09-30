@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import example from '../../../exampleData/product_data.json';
 
 const productDataSlice = createSlice({
   name: 'productData',

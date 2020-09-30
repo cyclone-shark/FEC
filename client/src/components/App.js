@@ -6,6 +6,7 @@ import MainView from './overview/left_side/MainView.jsx';
 import StyleList from './overview/right_side/StyleList.jsx';
 import { changeProductData } from '../reducers/productData.js';
 import { getProductData } from '../../../helpers/productHelpers.js';
+import exampleData from '../../../exampleData/product_data.json';
 // store.dispatch(changeProductId(4));
 // console.log(store.getState());
 // console.log(changeProductId(9));
@@ -13,7 +14,6 @@ import { getProductData } from '../../../helpers/productHelpers.js';
 
 class App extends React.Component {
   componentDidMount() {
-    //testing
     getProductData(1)
       .then((data) => {
         store.dispatch(changeProductData(data));
@@ -25,10 +25,10 @@ class App extends React.Component {
     const { name } = this.props;
     return (
       <>
+        {console.log(store.getState())}
         <h1>Hello {name}</h1>
-        <div>{console.log(store.getState().productData)}</div>
         <MainView />
-        {/* <StyleList /> */}
+        <StyleList />
       </>
     );
   }
