@@ -4,7 +4,7 @@ const styleSizeSlice = createSlice({
   name: 'selectedSize',
   initialState: 'S',
   reducers: {
-    changeStleSize(state, action) {
+    changeStyleSize(state, action) {
       const size = action.payload;
       return size;
     },
