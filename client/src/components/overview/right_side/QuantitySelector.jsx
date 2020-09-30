@@ -15,7 +15,11 @@ var QuantitySelector = (props) => {
   return (
     <select name='quantity' id='quantity'>
       {quantityRange.map((quantity) => {
-        return <option value={quantity}>{quantity}</option>;
+        return (
+          <option key={'quantity ' + quantity} value={quantity}>
+            {quantity}
+          </option>
+        );
       })}
     </select>
   );

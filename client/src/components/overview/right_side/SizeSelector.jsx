@@ -41,7 +41,11 @@ var SizeSelector = (props) => {
         }}
       >
         {sizeList.map((size) => {
-          return <option value={size}>{size}</option>;
+          return (
+            <option key={size} value={size}>
+              {size}
+            </option>
+          );
         })}
       </select>
       <QuantitySelector quantities={sizeQuantity} />
