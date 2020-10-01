@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { changeStyleSize } from '../../../reducers/styleSize.js';
 import { changeSKU } from '../../../reducers/sku.js';
+import { changeProductQuantity } from '../../../reducers/styleSizeQuantity.js';
 import { useSelector } from 'react-redux';
 import QuantitySelector from './QuantitySelector';
 import store from '../../../store.js';
@@ -11,6 +12,7 @@ var SizeSelector = (props) => {
   var styleData = {};
   var skusObj = {};
   var selectedStyle = useSelector((state) => state.productStyle);
+  var currQuantity = useSelector((state) => state.styleQuantity);
 
   if (props.data) {
     for (var i = 0; i < props.data.length; i++) {
@@ -26,6 +28,7 @@ var SizeSelector = (props) => {
       skuObj[key] = skus[key].size;
       skusObj[skus[key].size] = key;
       skuList.push(skuObj);
+      //{'M': 7, etc...}
       sizeQuantity[skus[key].size] = skus[key].quantity;
     }
   }
@@ -34,18 +37,28 @@ var SizeSelector = (props) => {
     return skus[size];
   };
 
-  var updateSize = (e) => {
-    var sku = getSku(skusObj, e.target.value);
+  var updateSizeAndSkuAndQuantity = (size) => {
+    var sku = getSku(skusObj, size);
+    var maxQuantity = skus[sku].quantity;
+
+    //need to update quantity if less than currently selected
+    if (maxQuantity < currQuantity) {
+      store.dispatch(changeProductQuantity(0));
+    }
     store.dispatch(changeSKU(sku));
     store.dispatch(changeStyleSize(e.target.value));
   };
+
+  // useEffect(() => {
+  //   updateSizeAndSkuAndQuantity(0);
+  // }, [selectedStyle]);
 
   return (
     <React.Fragment>
       <select
         id='size'
         onChange={(e) => {
-          updateSize(e);
+          updateSizeAndSkuAndQuantity(e.target.value);
         }}
       >
         {skuList.map((sku) => {
@@ -59,6 +72,7 @@ var SizeSelector = (props) => {
           );
         })}
       </select>
+      {/* quantities = {'M': 7, etc...} */}
       <QuantitySelector quantities={sizeQuantity} />
     </React.Fragment>
   );

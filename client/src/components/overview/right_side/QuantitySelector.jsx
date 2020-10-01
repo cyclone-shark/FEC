@@ -4,17 +4,28 @@ import { changeProductQuantity } from '../../../reducers/styleSizeQuantity.js';
 import store from '../../../store.js';
 
 var QuantitySelector = (props) => {
-  var selectedSize = useSelector((state) => state.styleSize);
-  var availableQuantity = props.quantities[selectedSize];
-
   var quantityRange = [];
+  var availableQuantity;
+  var selectedSize = useSelector((state) => state.styleSize);
 
-  for (var i = 0; i < availableQuantity; i++) {
+  availableQuantity = props.quantities[selectedSize];
+  quantityRange = [];
+
+  for (var i = 0; i < availableQuantity + 1; i++) {
     quantityRange.push(i);
   }
 
-  var updateQuantity = (e) => {
-    store.dispatch(changeProductQuantity(e.target.value));
+  useEffect(() => {
+    availableQuantity = props.quantities[selectedSize];
+    quantityRange = [];
+
+    for (var i = 0; i < availableQuantity + 1; i++) {
+      quantityRange.push(i);
+    }
+  }, [props]);
+
+  var updateQuantity = (quantity) => {
+    store.dispatch(changeProductQuantity(quantity));
   };
 
   return (
@@ -22,7 +33,7 @@ var QuantitySelector = (props) => {
       name='quantity'
       id='quantity'
       onChange={(e) => {
-        updateQuantity(e);
+        updateQuantity(e.target.value);
       }}
     >
       {quantityRange.map((quantity) => {
