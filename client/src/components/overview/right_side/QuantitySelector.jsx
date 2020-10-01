@@ -11,19 +11,12 @@ var QuantitySelector = (props) => {
   availableQuantity = props.quantities[selectedSize];
   quantityRange = [];
 
-  for (var i = 0; i < availableQuantity + 1; i++) {
+  for (var i = 1; i < availableQuantity + 1; i++) {
+    if (i > 15) {
+      break;
+    }
     quantityRange.push(i);
   }
-
-  useEffect(() => {
-    availableQuantity = props.quantities[selectedSize];
-    quantityRange = [];
-
-    for (var i = 0; i < availableQuantity + 1; i++) {
-      quantityRange.push(i);
-    }
-  }, [props]);
-
   var updateQuantity = (quantity) => {
     store.dispatch(changeProductQuantity(quantity));
   };
@@ -36,6 +29,7 @@ var QuantitySelector = (props) => {
         updateQuantity(e.target.value);
       }}
     >
+      <option key='-'>-</option>
       {quantityRange.map((quantity) => {
         return (
           <option key={'quantity ' + quantity} value={quantity}>

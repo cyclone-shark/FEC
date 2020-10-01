@@ -2,78 +2,59 @@ import React, { useState, useEffect } from 'react';
 import { changeStyleSize } from '../../../reducers/styleSize.js';
 import { changeSKU } from '../../../reducers/sku.js';
 import { changeProductQuantity } from '../../../reducers/styleSizeQuantity.js';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import QuantitySelector from './QuantitySelector';
-import store from '../../../store.js';
 
-var SizeSelector = (props) => {
-  var skuList = [];
-  var sizeQuantity = {};
-  var styleData = {};
-  var skusObj = {};
-  var selectedStyle = useSelector((state) => state.productStyle);
-  var currQuantity = useSelector((state) => state.styleQuantity);
+const SizeSelector = (props) => {
+  const dispatch = useDispatch();
+  const skuData = useSelector((state) => state.skuData);
+  const [sizes, setSizes] = useState([]);
+  const sizeList = [];
 
-  if (props.data) {
-    for (var i = 0; i < props.data.length; i++) {
-      if (props.data[i].style_id === selectedStyle) {
-        styleData = props.data[i];
+  useEffect(() => {
+    for (var key in skuData) {
+      sizeList.push(skuData[key].size);
+    }
+    setSizes(sizeList);
+  }, [skuData]);
+
+  var updateCurrSKU = (skuObj, size) => {
+    for (var key in skuObj) {
+      if (skuObj[key].size === size) {
+        dispatch(changeSKU(key));
       }
     }
-
-    var skus = styleData.skus;
-
-    for (var key in skus) {
-      var skuObj = {};
-      skuObj[key] = skus[key].size;
-      skusObj[skus[key].size] = key;
-      skuList.push(skuObj);
-      //{'M': 7, etc...}
-      sizeQuantity[skus[key].size] = skus[key].quantity;
-    }
-  }
-
-  var getSku = (skus, size) => {
-    return skus[size];
   };
 
-  var updateSizeAndSkuAndQuantity = (size) => {
-    var sku = getSku(skusObj, size);
-    var maxQuantity = skus[sku].quantity;
-
-    //need to update quantity if less than currently selected
-    if (maxQuantity < currQuantity) {
-      store.dispatch(changeProductQuantity(0));
-    }
-    store.dispatch(changeSKU(sku));
-    store.dispatch(changeStyleSize(e.target.value));
+  var updateSizeAndSku = (size) => {
+    // if (maxQuantity < currQuantity) {
+    //   dispatch(changeProductQuantity(0));
+    // }
+    dispatch(changeStyleSize(size));
+    updateCurrSKU(skuData, size);
   };
-
-  // useEffect(() => {
-  //   updateSizeAndSkuAndQuantity(0);
-  // }, [selectedStyle]);
 
   return (
     <React.Fragment>
       <select
         id='size'
         onChange={(e) => {
-          updateSizeAndSkuAndQuantity(e.target.value);
+          updateSizeAndSku(e.target.value);
         }}
       >
-        {skuList.map((sku) => {
+        <option name='default' value='default'>
+          Select Size
+        </option>
+        {sizes.map((size) => {
           return (
-            <option
-              name={'sku' + Object.keys(sku)[0]}
-              value={Object.values(sku)[0]}
-            >
-              {Object.values(sku)[0]}
+            <option name={'sku' + size} value={size}>
+              {size}
             </option>
           );
         })}
       </select>
       {/* quantities = {'M': 7, etc...} */}
-      <QuantitySelector quantities={sizeQuantity} />
+      {/* <QuantitySelector /> */}
     </React.Fragment>
   );
 };

@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { changeProductStyle } from '../../../reducers/styleId.js';
 import { changeStyleData } from '../../../reducers/currentStyleData.js';
-import store from '../../../store.js';
+import { changeSkuData } from '../../../reducers/skuData.js';
+import { changeSKU } from '../../../reducers/sku.js';
 var StyleEntry = (props) => {
+  //when i click a new entry I want to update the current sku with the selected styleSize and product style
+  const dispatch = useDispatch();
+  const allStyleData = useSelector((state) => state.productData.results);
+  const selectedSize = useSelector((state) => state.styleSize);
+
   var changeData = () => {
-    var allStyleData = store.getState().productData.results;
-    console.log(allStyleData);
     var styleId = props.style.style_id;
     var styleData = {};
 
@@ -14,14 +19,25 @@ var StyleEntry = (props) => {
         styleData = allStyleData[key];
       }
     }
-    store.dispatch(changeProductStyle(styleId));
-    store.dispatch(changeStyleData(styleData));
-    console.log(props.style);
-    //also going to need to change left side
+    dispatch(changeSkuData(styleData.skus));
+    dispatch(changeProductStyle(styleId));
+    dispatch(changeStyleData(styleData));
+
+    var skuObj = styleData.skus;
+    if (selectedSize != '') {
+      console.log(selectedSize);
+      updateCurrSKU(skuObj, selectedSize);
+    }
   };
 
-  //to use if we are making axios requests
-  var getData = () => {};
+  var updateCurrSKU = (skuObj, size) => {
+    for (var key in skuObj) {
+      if (skuObj[key].size === size) {
+        console.log('here');
+        dispatch(changeSKU(key));
+      }
+    }
+  };
 
   return (
     <li value={props.style.style_id} onClick={(e) => changeData()}>

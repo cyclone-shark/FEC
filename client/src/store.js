@@ -6,6 +6,7 @@ import sizeQuantityReducer from './reducers/styleSizeQuantity';
 import skuReducer from './reducers/sku';
 import productDataReducer from './reducers/productData';
 import styleDataReducer from './reducers/currentStyleData.js';
+import skuDataReducer from './reducers/skuData.js';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   styleSize: styleSizeReducer,
   styleQuantity: sizeQuantityReducer,
   styleData: styleDataReducer,
+  skuData: skuDataReducer,
   sku: skuReducer,
 });
 

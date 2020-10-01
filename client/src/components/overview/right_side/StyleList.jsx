@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import StyleEntry from './StyleEntry.jsx';
 import SizeSelector from './SizeSelector.jsx';
 import store from '../../../store.js';
@@ -16,7 +16,7 @@ var StyleList = () => {
             })
           : null}
       </ul>
-      <SizeSelector data={data} />
+      <SizeSelector />
     </React.Fragment>
   );
 };
