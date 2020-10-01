@@ -8,6 +8,7 @@ import QuantitySelector from './QuantitySelector';
 const SizeSelector = (props) => {
   const dispatch = useDispatch();
   const skuData = useSelector((state) => state.skuData);
+  const styleQuantity = useSelector((state) => state.styleQuantity);
   const [sizes, setSizes] = useState([]);
   const sizeList = [];
 
@@ -30,6 +31,9 @@ const SizeSelector = (props) => {
     // if (maxQuantity < currQuantity) {
     //   dispatch(changeProductQuantity(0));
     // }
+    if (styleQuantity === '-') {
+      dispatch(changeProductQuantity(1));
+    }
     dispatch(changeStyleSize(size));
     updateCurrSKU(skuData, size);
   };
@@ -42,7 +46,7 @@ const SizeSelector = (props) => {
           updateSizeAndSku(e.target.value);
         }}
       >
-        <option name='default' value='default'>
+        <option name='default' value=''>
           Select Size
         </option>
         {sizes.map((size) => {
@@ -54,7 +58,7 @@ const SizeSelector = (props) => {
         })}
       </select>
       {/* quantities = {'M': 7, etc...} */}
-      {/* <QuantitySelector /> */}
+      <QuantitySelector />
     </React.Fragment>
   );
 };

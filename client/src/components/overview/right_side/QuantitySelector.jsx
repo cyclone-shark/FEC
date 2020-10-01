@@ -4,19 +4,27 @@ import { changeProductQuantity } from '../../../reducers/styleSizeQuantity.js';
 import store from '../../../store.js';
 
 var QuantitySelector = (props) => {
-  var quantityRange = [];
-  var availableQuantity;
-  var selectedSize = useSelector((state) => state.styleSize);
+  var selectedSku = useSelector((state) => state.sku);
+  var skuData = useSelector((state) => state.skuData);
+  const styleSize = useSelector((state) => state.styleSize);
+  const [range, setRange] = useState([]);
 
-  availableQuantity = props.quantities[selectedSize];
-  quantityRange = [];
-
-  for (var i = 1; i < availableQuantity + 1; i++) {
-    if (i > 15) {
-      break;
+  useEffect(() => {
+    var quantityRange = [];
+    if (Object.keys(skuData).length != 0) {
+      console.log(skuData[selectedSku].quantity);
+      for (var i = 1; i < skuData[selectedSku].quantity + 1; i++) {
+        if (i > 15) {
+          break;
+        }
+        quantityRange.push(i);
+      }
+      console.log(quantityRange);
+      setRange(quantityRange);
+      console.log(range);
     }
-    quantityRange.push(i);
-  }
+  }, [selectedSku]);
+
   var updateQuantity = (quantity) => {
     store.dispatch(changeProductQuantity(quantity));
   };
@@ -28,9 +36,10 @@ var QuantitySelector = (props) => {
       onChange={(e) => {
         updateQuantity(e.target.value);
       }}
+      disabled={styleSize === ''}
     >
-      <option key='-'>-</option>
-      {quantityRange.map((quantity) => {
+      {styleSize === '' ? <option key='-'>-</option> : null}
+      {range.map((quantity) => {
         return (
           <option key={'quantity ' + quantity} value={quantity}>
             {quantity}
