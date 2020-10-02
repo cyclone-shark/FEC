@@ -7,6 +7,7 @@ import skuReducer from './reducers/sku';
 import productDataReducer from './reducers/productData';
 import styleDataReducer from './reducers/currentStyleData.js';
 import skuDataReducer from './reducers/skuData.js';
+import currentPhotoReducer from './reducers/currentPhoto.js';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   styleData: styleDataReducer,
   skuData: skuDataReducer,
   sku: skuReducer,
+  currentPhoto: currentPhotoReducer,
 });
 
 const store = configureStore({

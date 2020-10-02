@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import store from '../../../store.js';
+import Carousel from './Carousel';
 
 var MainView = () => {
-  console.log(store.getState());
-  return <div>{store.id}</div>;
+  var mainImage = useSelector((state) => state.currentPhoto);
+  return (
+    <div>
+      <img src={mainImage}></img>
+      <Carousel />
+    </div>
+  );
 };
 
 export default MainView;
