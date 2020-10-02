@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
@@ -5,8 +6,12 @@ import store from '../store.js';
 import MainView from './overview/left_side/MainView.jsx';
 import StyleList from './overview/right_side/StyleList.jsx';
 import { changeProductData } from '../reducers/productData.js';
+import { changeReviewData } from '../reducers/reviewData.js';
 import { getProductData } from '../../../helpers/productHelpers.js';
 import exampleData from '../../../exampleData/product_data.json';
+import ReviewList from './ratings/reviewList.jsx';
+import { getReviewsForProduct } from '../../../helpers/apiHelpers.js'
+
 // store.dispatch(changeProductId(4));
 // console.log(store.getState());
 // console.log(changeProductId(9));
@@ -19,6 +24,11 @@ class App extends React.Component {
         store.dispatch(changeProductData(data));
       })
       .catch((err) => console.error(err));
+    getReviewsForProduct(1)
+      .then(({data}) => {
+        store.dispatch(changeReviewData(data));
+      })
+      .catch(error => console.log(error));
   }
 
   render() {
@@ -26,9 +36,12 @@ class App extends React.Component {
     return (
       <>
         {console.log(store.getState())}
-        <h1>Hello {name}</h1>
+        {console.log("kovvy!")}
+        <h1>Hello {name}!</h1>
         <MainView />
         <StyleList />
+        That's all folks!
+        <ReviewList />
       </>
     );
   }

@@ -5,6 +5,7 @@ import styleSizeReducer from './reducers/styleSize';
 import sizeQuantityReducer from './reducers/styleSizeQuantity';
 import skuReducer from './reducers/sku';
 import productDataReducer from './reducers/productData';
+import reviewDataReducer from './reducers/reviewData'
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   styleSize: styleSizeReducer,
   styleQuantity: sizeQuantityReducer,
   sku: skuReducer,
+  reviewData: reviewDataReducer
 });
 
 const store = configureStore({

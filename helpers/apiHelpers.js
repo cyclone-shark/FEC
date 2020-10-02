@@ -25,7 +25,7 @@ const getProductStyles = (id) => {
 };
 //List Reviews
 const getReviewsForProduct = (productId) => {
-  return axios.get(`http://18.224.37.110/reviews?product_id=${productId}`);
+  return axios.get(`http://18.224.37.110/reviews?product_id=${productId}&count=10000`);
 };
 //Get Review Metadata
 const getReviewMetadataForProduct = (productId) => {
@@ -72,4 +72,4 @@ export {
   addReview,
   markReviewHelpful,
   reportReview
- };
+};
