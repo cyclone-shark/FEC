@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const skuSlice = createSlice({
   name: 'selectedSKU',
-  initialState: '1',
+  initialState: '',
   reducers: {
     changeSKU(state, action) {
       const sku = action.payload;
@@ -11,5 +11,5 @@ const skuSlice = createSlice({
   },
 });
 
-export const { changeStyleSize } = skuSlice.actions;
+export const { changeSKU } = skuSlice.actions;
 export default skuSlice.reducer;

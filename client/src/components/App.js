@@ -12,6 +12,7 @@ import exampleData from '../../../exampleData/product_data.json';
 // console.log(changeProductId(9));
 // console.log(store.getState());
 
+console.log(store.getState());
 class App extends React.Component {
   componentDidMount() {
     getProductData(1)
@@ -25,7 +26,6 @@ class App extends React.Component {
     const { name } = this.props;
     return (
       <>
-        {console.log(store.getState())}
         <h1>Hello {name}</h1>
         <MainView />
         <StyleList />
