@@ -4,8 +4,9 @@ import { changeProductStyle } from '../../../reducers/styleId.js';
 import { changeStyleData } from '../../../reducers/currentStyleData.js';
 import { changeSkuData } from '../../../reducers/skuData.js';
 import { changeSKU } from '../../../reducers/sku.js';
+import { changeCurrentPhoto } from '../../../reducers/currentPhoto';
 import StyleEntry from './StyleEntry.jsx';
-import SizeSelector from './SizeSelector.jsx';
+
 import store from '../../../store.js';
 
 var StyleList = () => {
@@ -14,6 +15,7 @@ var StyleList = () => {
   //set product style to first prodcut of product id
   useEffect(() => {
     if (data) {
+      dispatch(changeCurrentPhoto(data[0].photos[0].url));
       dispatch(changeSkuData(data[0].skus));
       dispatch(changeProductStyle(data[0].style_id));
       dispatch(changeStyleData(data[0]));
@@ -22,14 +24,13 @@ var StyleList = () => {
 
   return (
     <React.Fragment>
-      <ul>
+      <span>
         {data
           ? data.map((styleData) => {
               return <StyleEntry key={styleData.style_id} style={styleData} />;
             })
           : null}
-      </ul>
-      <SizeSelector />
+      </span>
     </React.Fragment>
   );
 };

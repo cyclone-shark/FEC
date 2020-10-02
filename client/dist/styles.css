@@ -1,0 +1,22 @@
+.overview {
+  display: grid;
+  grid-template-areas:
+    'c a a b b '
+    'c a a b b ';
+}
+.a {
+  grid-area: a;
+}
+.b {
+  grid-area: b;
+}
+.c {
+  grid-area: c;
+}
+.picture {
+  max-width: 100%;
+  max-height: 700px;
+}
+.carousel {
+  max-height: 100px;
+}
