@@ -5,10 +5,14 @@ import Carousel from './Carousel';
 var MainView = () => {
   var mainImage = useSelector((state) => state.currentPhoto);
   return (
-    <div>
-      <img src={mainImage}></img>
-      <Carousel />
-    </div>
+    <React.Fragment>
+      <div className='a'>
+        <img className='picture' src={mainImage}></img>
+      </div>
+      <div className='c'>
+        <Carousel />
+      </div>
+    </React.Fragment>
   );
 };
 

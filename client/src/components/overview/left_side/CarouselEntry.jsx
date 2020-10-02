@@ -11,8 +11,12 @@ var CarouselEntry = (props) => {
   };
 
   return (
-    <div>
-      <img src={props.photo.thumbnail_url} onClick={(e) => changePhoto()}></img>
+    <div id='c'>
+      <img
+        className='carousel'
+        src={props.photo.thumbnail_url}
+        onClick={(e) => changePhoto()}
+      ></img>
     </div>
   );
 };

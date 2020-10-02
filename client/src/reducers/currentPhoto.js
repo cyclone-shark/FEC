@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const currentPhotoSlice = createSlice({
   name: 'currentPhoto',
-  initialState: 'sdfkjsd',
+  initialState: '',
   reducers: {
     changeCurrentPhoto(state, action) {
       const photo = action.payload;

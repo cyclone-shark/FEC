@@ -43,13 +43,13 @@ var StyleEntry = (props) => {
   };
 
   return (
-    <li value={props.style.style_id} onClick={(e) => changeData()}>
+    <div value={props.style.style_id} onClick={(e) => changeData()}>
       <img
         id='style-entry'
         style={{ borderRadius: '50%', width: '100px', height: '100px' }}
         src={props.style.photos[0].thumbnail_url}
       />
-    </li>
+    </div>
   );
 };
 

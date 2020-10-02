@@ -6,7 +6,7 @@ import { changeSkuData } from '../../../reducers/skuData.js';
 import { changeSKU } from '../../../reducers/sku.js';
 import { changeCurrentPhoto } from '../../../reducers/currentPhoto';
 import StyleEntry from './StyleEntry.jsx';
-import SizeSelector from './SizeSelector.jsx';
+
 import store from '../../../store.js';
 
 var StyleList = () => {
@@ -24,14 +24,13 @@ var StyleList = () => {
 
   return (
     <React.Fragment>
-      <ul>
+      <span>
         {data
           ? data.map((styleData) => {
               return <StyleEntry key={styleData.style_id} style={styleData} />;
             })
           : null}
-      </ul>
-      <SizeSelector />
+      </span>
     </React.Fragment>
   );
 };
