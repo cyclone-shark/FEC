@@ -7,6 +7,7 @@ import skuReducer from './reducers/sku';
 import productDataReducer from './reducers/productData';
 import styleDataReducer from './reducers/currentStyleData.js';
 import skuDataReducer from './reducers/skuData.js';
+import currentPhotoReducer from './reducers/currentPhoto.js';
 import { combineReducers } from 'redux';
 import reviewDataReducer from  './reducers/reviewData'
 import reviewSortOrderReducer from './reducers/reviewSortOrder'
@@ -22,10 +23,14 @@ const rootReducer = combineReducers({
   styleData: styleDataReducer,
   skuData: skuDataReducer,
   sku: skuReducer,
+<<<<<<< HEAD
   reviewData: reviewDataReducer,
   reviewSortOrder: reviewSortOrderReducer,
   reviewCharacteristcsData: reviewCharacteristicsDataReducer,
   reviewCount: reviewCountReducer
+=======
+  currentPhoto: currentPhotoReducer,
+>>>>>>> b32dec6e6f51299c8ac90661b2fbb82b07427574
 });
 
 const store = configureStore({
