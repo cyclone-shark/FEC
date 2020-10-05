@@ -13,7 +13,7 @@ var ChangeProduct = () => {
     dispatch(changeProductId(id));
     getProductData(id)
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         dispatch(changeProductData(data));
       })
       .catch((err) => console.error(err));
@@ -25,7 +25,7 @@ var ChangeProduct = () => {
   };
 
   var updateId = (value) => {
-    console.log(value);
+    //console.log(value);
     setId(value);
   };
   return (
