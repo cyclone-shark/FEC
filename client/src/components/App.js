@@ -3,7 +3,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 import store from '../store.js';
-import MainView from './overview/left_side/MainView.jsx';
+
+import OverView from './overview/OverView.jsx';
 import StyleList from './overview/right_side/StyleList.jsx';
 import { changeProductData } from '../reducers/productData.js';
 import { changeReviewData } from '../reducers/reviewData.js';
@@ -42,6 +43,8 @@ class App extends React.Component {
         <ReviewList /> 
         <Rating />
         <RatingBar />
+        <h1>Hello {name}</h1>
+        <OverView />
       </>
     );
   }
