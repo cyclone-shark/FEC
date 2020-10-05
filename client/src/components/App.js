@@ -9,7 +9,6 @@ import StyleList from './overview/right_side/StyleList.jsx';
 import { changeProductData } from '../reducers/productData.js';
 import { changeReviewData } from '../reducers/reviewData.js';
 import { getProductData } from '../../../helpers/productHelpers.js';
-<<<<<<< HEAD
 import exampleData from '../../../exampleData/product_data.json';
 import ReviewList from './ratings/reviewList.jsx';
 import Rating from './ratings/rating.jsx';
@@ -20,8 +19,6 @@ import { getReviewsForProduct } from '../../../helpers/apiHelpers.js'
 // console.log(store.getState());
 // console.log(changeProductId(9));
 // console.log(store.getState());
-=======
->>>>>>> b32dec6e6f51299c8ac90661b2fbb82b07427574
 
 class App extends React.Component {
   componentDidMount() {
@@ -41,16 +38,13 @@ class App extends React.Component {
     const { name } = this.props;
     return (
       <>
-<<<<<<< HEAD
         <MainView />
         <StyleList />
         <ReviewList /> 
         <Rating />
         <RatingBar />
-=======
         <h1>Hello {name}</h1>
         <OverView />
->>>>>>> b32dec6e6f51299c8ac90661b2fbb82b07427574
       </>
     );
   }

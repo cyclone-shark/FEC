@@ -23,14 +23,11 @@ const rootReducer = combineReducers({
   styleData: styleDataReducer,
   skuData: skuDataReducer,
   sku: skuReducer,
-<<<<<<< HEAD
   reviewData: reviewDataReducer,
   reviewSortOrder: reviewSortOrderReducer,
   reviewCharacteristcsData: reviewCharacteristicsDataReducer,
-  reviewCount: reviewCountReducer
-=======
+  reviewCount: reviewCountReducer,
   currentPhoto: currentPhotoReducer,
->>>>>>> b32dec6e6f51299c8ac90661b2fbb82b07427574
 });
 
 const store = configureStore({
