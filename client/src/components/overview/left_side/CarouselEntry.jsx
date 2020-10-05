@@ -11,13 +11,13 @@ var CarouselEntry = (props) => {
   };
 
   return (
-    <div id='c'>
+    <React.Fragment>
       <img
-        className='carousel'
+        className='carousel-entry'
         src={props.photo.thumbnail_url}
         onClick={(e) => changePhoto()}
       ></img>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -5,7 +5,7 @@ import SizeSelector from './SizeSelector.jsx';
 
 var SideView = () => {
   return (
-    <div className='b'>
+    <div>
       <StyleList />
       <SizeSelector />
     </div>

@@ -24,13 +24,13 @@ var StyleList = () => {
 
   return (
     <React.Fragment>
-      <span>
+      <div className='style-list'>
         {data
           ? data.map((styleData) => {
               return <StyleEntry key={styleData.style_id} style={styleData} />;
             })
           : null}
-      </span>
+      </div>
     </React.Fragment>
   );
 };

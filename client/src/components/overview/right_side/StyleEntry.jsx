@@ -45,7 +45,7 @@ var StyleEntry = (props) => {
   return (
     <div value={props.style.style_id} onClick={(e) => changeData()}>
       <img
-        id='style-entry'
+        className='style-entry'
         style={{ borderRadius: '50%', width: '100px', height: '100px' }}
         src={props.style.photos[0].thumbnail_url}
       />
