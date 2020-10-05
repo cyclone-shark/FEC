@@ -13,7 +13,7 @@ import ReviewList from './ratings/reviewList.jsx';
 import Rating from './ratings/rating.jsx';
 import RatingBar from './ratings/ratingBar.jsx';
 import { getReviewsForProduct } from '../../../helpers/apiHelpers.js';
-
+import QAndA from './QuestionsAndAnswers/QAndA';
 class App extends React.Component {
   componentDidMount() {
     getProductData(1)
@@ -32,11 +32,13 @@ class App extends React.Component {
     const { name } = this.props;
     return (
       <>
+        <OverView />
         <ReviewList />
         <Rating />
         <RatingBar />
         <h1>Hello {name}</h1>
-        <OverView />
+
+        <QAndA />
       </>
     );
   }
