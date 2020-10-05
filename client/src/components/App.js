@@ -14,6 +14,7 @@ import Rating from './ratings/rating.jsx';
 import RatingBar from './ratings/ratingBar.jsx';
 import { getReviewsForProduct } from '../../../helpers/apiHelpers.js';
 import QAndA from './QuestionsAndAnswers/QAndA';
+import ChangeProduct from './ChangeProduct';
 class App extends React.Component {
   componentDidMount() {
     getProductData(1)
@@ -32,6 +33,7 @@ class App extends React.Component {
     const { name } = this.props;
     return (
       <>
+        <ChangeProduct />
         <OverView />
         <ReviewList />
         <Rating />
