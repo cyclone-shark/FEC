@@ -9,9 +9,9 @@ import styleDataReducer from './reducers/currentStyleData.js';
 import skuDataReducer from './reducers/skuData.js';
 import currentPhotoReducer from './reducers/currentPhoto.js';
 import { combineReducers } from 'redux';
-import reviewDataReducer from  './reducers/reviewData'
-import reviewSortOrderReducer from './reducers/reviewSortOrder'
-import reviewCharacteristicsDataReducer from './reducers/reviewCharacteristicsData'
+import reviewDataReducer from './reducers/reviewData';
+import reviewSortOrderReducer from './reducers/reviewSortOrder';
+import reviewCharacteristicsDataReducer from './reducers/reviewCharacteristicsData';
 import reviewCountReducer from './reducers/reviewCount';
 
 const rootReducer = combineReducers({
