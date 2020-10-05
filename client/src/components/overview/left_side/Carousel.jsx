@@ -13,6 +13,7 @@ var Carousel = (props) => {
         : null}
     </div>
   );
+  hello;
 };
 
 export default Carousel;
