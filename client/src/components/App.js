@@ -9,19 +9,10 @@ import StyleList from './overview/right_side/StyleList.jsx';
 import { changeProductData } from '../reducers/productData.js';
 import { changeReviewData } from '../reducers/reviewData.js';
 import { getProductData } from '../../../helpers/productHelpers.js';
-<<<<<<< HEAD
-import exampleData from '../../../exampleData/product_data.json';
 import ReviewList from './ratings/reviewList.jsx';
 import Rating from './ratings/rating.jsx';
 import RatingBar from './ratings/ratingBar.jsx';
-import { getReviewsForProduct } from '../../../helpers/apiHelpers.js'
-
-// store.dispatch(changeProductId(4));
-// console.log(store.getState());
-// console.log(changeProductId(9));
-// console.log(store.getState());
-=======
->>>>>>> b32dec6e6f51299c8ac90661b2fbb82b07427574
+import { getReviewsForProduct } from '../../../helpers/apiHelpers.js';
 
 class App extends React.Component {
   componentDidMount() {
@@ -31,26 +22,21 @@ class App extends React.Component {
       })
       .catch((err) => console.error(err));
     getReviewsForProduct(1)
-      .then((data) => { 
+      .then((data) => {
         store.dispatch(changeReviewData(data));
       })
-      .catch(error => console.log(error)); 
+      .catch((error) => console.log(error));
   }
 
   render() {
     const { name } = this.props;
     return (
       <>
-<<<<<<< HEAD
-        <MainView />
-        <StyleList />
-        <ReviewList /> 
+        <ReviewList />
         <Rating />
         <RatingBar />
-=======
         <h1>Hello {name}</h1>
         <OverView />
->>>>>>> b32dec6e6f51299c8ac90661b2fbb82b07427574
       </>
     );
   }
