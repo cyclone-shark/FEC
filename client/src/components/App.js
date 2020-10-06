@@ -39,7 +39,8 @@ class App extends React.Component {
         <QAndA />
         <Rating />
         <RatingBar />
-
+        <h1>Hello {name}</h1>
+        <QAndA />
       </>
     );
   }
