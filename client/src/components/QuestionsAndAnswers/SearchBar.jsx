@@ -3,10 +3,15 @@ import React from 'react';
 const SearchBar = () => {
 
   return (
-    <div >
-      <input style={{width: ''}} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
+    <div>
+      <div className="ui form">
+        <div className="field">
+          <input className="input" />
+        </div>
+      </div>
+      <div className="ui celled list"> Enter text</div>
     </div>
-  )
+  );
 }
 
 export default SearchBar;

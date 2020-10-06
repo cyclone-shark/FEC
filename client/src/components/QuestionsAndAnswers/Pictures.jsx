@@ -4,13 +4,13 @@ const Pictures = ({ pictures }) => {
 
   const renderedPicture =
     pictures.length > 0 ? (
-      <div>
+      <div class="ui small images">
         {pictures.map((picture, i) => {
           return (
             <img
               key={i}
               src={picture}
-              style={{ height: "180px", width: "200px" }}
+              // style={{ height: "180px", width: "200px" }}
             />
           );
         })}

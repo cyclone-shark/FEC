@@ -36,6 +36,7 @@ class App extends React.Component {
         <ChangeProduct />
         <OverView />
         <ReviewList />
+        <QAndA />
         <Rating />
         <RatingBar />
         <h1>Hello {name}</h1>

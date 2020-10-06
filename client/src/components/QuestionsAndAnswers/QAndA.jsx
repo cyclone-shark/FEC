@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import SearchBar from './SearchBar.jsx';
 import GetQuestions from './GetQuestions.jsx';
 import AddQuestion from './AddQuestion.jsx';
+import ShowTwoQuestions from './ShowTwoQuestions';
 
 const QAndA = () => {
-  //const id = useSelector (state => state.productId)
+
   return (
     <div>
+      <div><h2>Questions and Answers </h2></div>
       <SearchBar />
       <GetQuestions />
       <AddQuestion />
