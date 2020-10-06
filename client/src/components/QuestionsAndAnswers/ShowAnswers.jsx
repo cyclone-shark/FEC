@@ -1,49 +1,49 @@
-import React, {useState} from 'react';
-import Pictures from './Pictures.jsx';
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import Pictures from "./Pictures.jsx";
 
-const ShowAnswers = ({questions, setQuestion}) => {
 
-  //console.log(questions)
-  const renderedList = questions.map((question) => {
-    return (
-      <div >
-        <div > Q: {question.question_body}</div>
-        <div>
-          {Object.keys(question.answers).map((answer) => {
-            return (
-              <div>
-                <div>A: {question.answers[answer].body}</div>
-                <div>
-                  <span>by {question.answers[answer].answerer_name}, </span>
-                  <span>{question.answers[answer].date} </span>
-                  <span> helpful? {question.answers[answer].helpfulness}</span>
-                  <Pictures pictures={question.answers[answer].photos} />
-                </div>
-              </div>
-            )
-          })}
-        </div>
+const ShowAnswers = ({ renderedList}) => {
 
-      </div>
+  var array = renderedList.slice(0, 2); //show first two
+  console.log('array is', array);
+  const [count, setCount] = useState(2);
+  const [list, setList] = useState(array);
+  const [longerList, setLongerList] = useState(array);
 
-    )
-  })
+  console.log('list is', list)
+  console.log('longerList is', longerList)
+
+
+  const handleClick = () => {
+    if (renderedList.length <= 2) {
+      setList(renderedList);
+    } else if (renderedList.length > 2) {
+      var temp = renderedList.slice(0, count);
+      setLongerList(temp);
+      setCount(count + 2);
+
+    }
+  };
+
+  useEffect (() => {
+    setList(renderedList.slice(0,2))
+    setLongerList(renderedList)
+  }, [renderedList])
 
   return (
     <div>
-      <h4> LOAD MORE ANSWERS </h4>
       <div>
-        <div>{renderedList}</div>
-        <button> MORE ANSWERED QUESTIONS</button>
+        {renderedList.length <= 2 ? (
+          <div> {list}</div>
+        ) : (
+          <div>
+            <div> {longerList} </div>
+            <button onClick={handleClick}> MORE ANSWERED QUESTIONS</button>
+          </div>
+        )}
       </div>
-      <div>
-
-      </div>
-
     </div>
-  )
-
-}
-
+  );
+};
 
 export default ShowAnswers;

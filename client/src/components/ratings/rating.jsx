@@ -20,7 +20,7 @@ const Rating = () => {
           numRatings += ratings[key];
         }
         var avg = Math.round((sumRatings/numRatings) * 10) / 10;
-        console.log('average is -> ' + avg);
+        //console.log('average is -> ' + avg);
         changeMetaData(avg);
       })
   }
