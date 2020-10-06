@@ -5,6 +5,8 @@ import { changeStyleData } from '../../../reducers/currentStyleData.js';
 import { changeSkuData } from '../../../reducers/skuData.js';
 import { changeSKU } from '../../../reducers/sku.js';
 import { changeCurrentPhoto } from '../../../reducers/currentPhoto';
+import { changeCurrentPrice } from '../../../reducers/currentPrice';
+import { changeSalePrice } from '../../../reducers/salePrice';
 var StyleEntry = (props) => {
   //when i click a new entry I want to update the current sku with the selected styleSize and product style
   const dispatch = useDispatch();
@@ -20,8 +22,12 @@ var StyleEntry = (props) => {
         styleData = allStyleData[key];
       }
     }
+
+    dispatch(changeCurrentPrice(styleData.original_price));
+
+    dispatch(changeSalePrice(styleData.sale_price));
+
     dispatch(changeCurrentPhoto(styleData.photos[0].url));
-    //also change carousel
     dispatch(changeSkuData(styleData.skus));
     dispatch(changeProductStyle(styleId));
     dispatch(changeStyleData(styleData));
@@ -44,11 +50,7 @@ var StyleEntry = (props) => {
 
   return (
     <div value={props.style.style_id} onClick={(e) => changeData()}>
-      <img
-        id='style-entry'
-        style={{ borderRadius: '50%', width: '100px', height: '100px' }}
-        src={props.style.photos[0].thumbnail_url}
-      />
+      <img className='style-entry' src={props.style.photos[0].thumbnail_url} />
     </div>
   );
 };
