@@ -9,6 +9,7 @@ const SizeSelector = (props) => {
   const dispatch = useDispatch();
   const skuData = useSelector((state) => state.skuData);
   const styleQuantity = useSelector((state) => state.styleQuantity);
+  const size = useSelector((state) => state.styleSize);
   const [sizes, setSizes] = useState([]);
   const sizeList = [];
 
@@ -17,6 +18,7 @@ const SizeSelector = (props) => {
       sizeList.push(skuData[key].size);
     }
     setSizes(sizeList);
+    updateCurrSKU(skuData, size);
   }, [skuData]);
 
   var updateCurrSKU = (skuObj, size) => {

@@ -7,8 +7,8 @@ var Carousel = (props) => {
   return (
     <div>
       {photos
-        ? photos.map((photo) => {
-            return <CarouselEntry photo={photo} />;
+        ? photos.map((photo, index) => {
+            return <CarouselEntry index={index} photo={photo} />;
           })
         : null}
     </div>
