@@ -14,7 +14,6 @@ const ShowAnswers = ({ renderedList}) => {
 
 
   const handleClick = () => {
-
     if (listLength > 2) {
       setCount(count + 2);
       var temp = renderedList.slice(0, count);
@@ -26,8 +25,6 @@ const ShowAnswers = ({ renderedList}) => {
   useEffect (() => {
     setLongerList(renderedList.slice(0, 2))
     setListLength(renderedList.length)
-    console.log(listLength)
-    console.log('renderedList', renderedList)
 
     if (renderedList.length > 2) {
       setToggle(true)
