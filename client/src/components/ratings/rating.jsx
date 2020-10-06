@@ -26,11 +26,11 @@ export const Rating = () => {
         changeAvgRating(avg);
       })
   };
-  
+
   useEffect(() =>  {
     getAverageRating();
   }, [productId]);
-  
+
     const RatingStyle = styled.div`
       .star-ratings-css {
         unicode-bidi: bidi-override;
