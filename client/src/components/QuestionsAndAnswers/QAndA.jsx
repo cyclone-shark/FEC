@@ -9,6 +9,7 @@ const QAndA = () => {
 
   return (
     <div>
+      <div><h2>Questions and Answers </h2></div>
       <SearchBar />
       <GetQuestions />
       <AddQuestion />
