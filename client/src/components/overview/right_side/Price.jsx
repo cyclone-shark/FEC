@@ -18,7 +18,7 @@ const Price = (props) => {
 
   return (
     <React.Fragment>
-      <div>{price}</div>
+      <div>${price}</div>
     </React.Fragment>
   );
 };

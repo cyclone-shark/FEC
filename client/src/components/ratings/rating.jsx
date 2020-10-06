@@ -23,46 +23,9 @@ export const Rating = () => {
     });
   };
 
-  useEffect(() =>  {
+  useEffect(() => {
     getAverageRating();
   }, [productId]);
-
-    const RatingStyle = styled.div`
-      .star-ratings-css {
-        unicode-bidi: bidi-override;
-        color: #c5c5c5;
-        font-size: 25px;
-        height: 25px;
-        width: 125px;
-        margin: 0 auto;
-        position: relative;
-        text-shadow: 0 1px 0 #a2a2a2;
-      }
-      .star-ratings-css::before {
-        content: '★★★★★';
-        opacity: .3;
-      }
-      .star-ratings-css::after {
-        color: gold;
-        content: '★★★★★';
-        text-shadow: 0 1px 0 red;
-        position: absolute;
-        z-index: 1;
-        display: block;
-        left: 0;
-        top: 0;
-        width: ${(avgRating/5.0) * 100}%;
-        overflow: hidden;
-      }`;
-    return (
-        <>
-          <h1>{avgRating}</h1>
-          <RatingStyle>
-            <div className="star-ratings-css"></div>
-          </RatingStyle>
-        </>
-    );
-  }
 
   const RatingStyle = styled.div`
     .star-ratings-css {

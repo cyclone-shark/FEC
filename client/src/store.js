@@ -15,6 +15,7 @@ import reviewCharacteristicsDataReducer from './reducers/reviewCharacteristicsDa
 import reviewCountReducer from './reducers/reviewCount';
 import currentPriceReducer from './reducers/currentPrice';
 import salePriceReducer from './reducers/salePrice';
+import photoIndexReducer from './reducers/photoIndex';
 const rootReducer = combineReducers({
   productData: productDataReducer,
   productId: productIdReducer,
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   currentPhoto: currentPhotoReducer,
   currentPrice: currentPriceReducer,
   salePrice: salePriceReducer,
+  photoIndex: photoIndexReducer,
 });
 
 const store = configureStore({

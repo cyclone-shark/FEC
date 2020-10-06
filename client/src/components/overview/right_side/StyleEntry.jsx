@@ -5,6 +5,7 @@ import { changeStyleData } from '../../../reducers/currentStyleData.js';
 import { changeSkuData } from '../../../reducers/skuData.js';
 import { changeSKU } from '../../../reducers/sku.js';
 import { changeCurrentPhoto } from '../../../reducers/currentPhoto';
+import { changePhotoIndex } from '../../../reducers/photoIndex';
 import { changeCurrentPrice } from '../../../reducers/currentPrice';
 import { changeSalePrice } from '../../../reducers/salePrice';
 var StyleEntry = (props) => {
@@ -26,7 +27,7 @@ var StyleEntry = (props) => {
     dispatch(changeCurrentPrice(styleData.original_price));
 
     dispatch(changeSalePrice(styleData.sale_price));
-
+    dispatch(changePhotoIndex(0));
     dispatch(changeCurrentPhoto(styleData.photos[0].url));
     dispatch(changeSkuData(styleData.skus));
     dispatch(changeProductStyle(styleId));
