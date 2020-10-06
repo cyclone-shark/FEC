@@ -45,7 +45,7 @@ const GetQuestions = () => {
     .sort((a, b) => b.question_helpfulness - a.question_helpfulness)
     .map((question) => {
       return (
-        <div>
+        <div key={question.question_id}>
           <div> Q: {question.question_body}</div>
           <div>
             {Object.keys(question.answers).map((answer) => {
