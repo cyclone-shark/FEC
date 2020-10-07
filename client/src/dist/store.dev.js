@@ -35,6 +35,14 @@ var _reviewCharacteristicsData = _interopRequireDefault(require("./reducers/revi
 
 var _reviewCount = _interopRequireDefault(require("./reducers/reviewCount"));
 
+var _reviewMetadata = _interopRequireDefault(require("./reducers/reviewMetadata"));
+
+var _currentPrice = _interopRequireDefault(require("./reducers/currentPrice"));
+
+var _salePrice = _interopRequireDefault(require("./reducers/salePrice"));
+
+var _photoIndex = _interopRequireDefault(require("./reducers/photoIndex"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
@@ -47,10 +55,14 @@ var rootReducer = (0, _redux.combineReducers)({
   skuData: _skuData["default"],
   sku: _sku["default"],
   reviewData: _reviewData["default"],
+  reviewMetadata: _reviewMetadata["default"],
   reviewSortOrder: _reviewSortOrder["default"],
   reviewCharacteristcsData: _reviewCharacteristicsData["default"],
   reviewCount: _reviewCount["default"],
-  currentPhoto: _currentPhoto["default"]
+  currentPhoto: _currentPhoto["default"],
+  currentPrice: _currentPrice["default"],
+  salePrice: _salePrice["default"],
+  photoIndex: _photoIndex["default"]
 });
 var store = (0, _toolkit.configureStore)({
   reducer: rootReducer
