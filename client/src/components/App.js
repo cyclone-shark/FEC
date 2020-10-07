@@ -15,6 +15,7 @@ import RatingBar from './ratings/ratingBar.jsx';
 import { getReviewsForProduct } from '../../../helpers/apiHelpers.js';
 import QAndA from './QuestionsAndAnswers/QAndA';
 import ChangeProduct from './ChangeProduct';
+
 class App extends React.Component {
   componentDidMount() {
     getProductData(1)
