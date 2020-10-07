@@ -12,6 +12,7 @@
 }
 .c {
   grid-area: c;
+  max-height: 60vh;
 }
 .picture {
   max-width: 100%;
@@ -19,4 +20,12 @@
 }
 .carousel {
   max-height: 100px;
+}
+.style-entry {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+.style-list {
+  grid-area: b;
 }

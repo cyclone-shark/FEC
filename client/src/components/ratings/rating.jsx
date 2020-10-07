@@ -1,35 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector  } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getReviewMetadataForProduct } from '../../../../helpers/apiHelpers';
 import './styles.css';
 import styled from 'styled-components';
 import RatingBars from './ratingBars';
 import ReviewList  from './reviewList'
 
-
 export const Rating = () => {
   var productId = useSelector((state) => state.productId);
   var [avgRating, changeAvgRating] = useState(0);
 
-
   const getAverageRating = () => {
-    getReviewMetadataForProduct(productId)
-      .then((meta) => {
-        // const len = reviews.length;
+    getReviewMetadataForProduct(productId).then((meta) => {
+      // const len = reviews.length;
 
-        var ratings = meta.ratings;
-        var numRatings = 0;
-        var sumRatings = 0;
-        for (var key of Object.keys(ratings))  {
-          sumRatings += (Number(key) * ratings[key]);
-          numRatings += ratings[key];
-        }
-        var avg = Math.round((sumRatings/numRatings) * 10) / 10;
-        changeAvgRating(avg);
-      })
+      var ratings = meta.ratings;
+      var numRatings = 0;
+      var sumRatings = 0;
+      for (var key of Object.keys(ratings)) {
+        sumRatings += Number(key) * ratings[key];
+        numRatings += ratings[key];
+      }
+      var avg = Math.round((sumRatings / numRatings) * 10) / 10;
+      changeAvgRating(avg);
+    });
   };
-  
-  useEffect(() =>  {
+
+  useEffect(() => {
     getAverageRating();
   }, [productId]);
   
