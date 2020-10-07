@@ -5,6 +5,7 @@ import Pictures from './Pictures';
 
 const List = ({questions}) => {
 
+
   const renderedList = questions
     .sort((a, b) => b.question_helpfulness - a.question_helpfulness)
     .map((question) => {

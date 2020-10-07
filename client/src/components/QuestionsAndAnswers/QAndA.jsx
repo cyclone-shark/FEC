@@ -9,6 +9,7 @@ import ShowTwoQuestions from './ShowTwoQuestions';
 
 const QAndA = () => {
 
+
   const [questions, setQuestions] = useState([]);
   const [status, setStaus] = useState(false)
   const id = useSelector((state) => state.productId);
@@ -34,8 +35,8 @@ const QAndA = () => {
     <div>
       <div><h2>Questions and Answers </h2></div>
       <SearchBar />
-      <GetQuestions  questions={questions}/>
-      <AddQuestion />
+      <List questions={questions} />
+      <AddQuestion setQuestions={setQuestions}/>
     </div>
   );
 };

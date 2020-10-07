@@ -3,7 +3,7 @@ import Pictures from "./Pictures.jsx";
 
 
 const ShowAnswers = ({ renderedList}) => {
-
+  console.log('rendered list',renderedList)
   //var array = renderedList.slice(0, 2); //show first two
 
   const [count, setCount] = useState(2);
@@ -23,7 +23,7 @@ const ShowAnswers = ({ renderedList}) => {
 
 
   useEffect (() => {
-    setLongerList(renderedList.slice(0, 2))
+    setLongerList(renderedList.slice(0, 4))
     setListLength(renderedList.length)
 
     if (renderedList.length > 2) {
