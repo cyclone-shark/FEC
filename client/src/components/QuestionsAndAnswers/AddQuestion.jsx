@@ -50,13 +50,13 @@ export default function AddQuestion({ setQuestions }) {
   const [email, setEmail] = useState("");
 
   function checkform() {
-    if (!name) {
+    if (!document.feedback.field.value) {
       alert("please enter you name");
       return false;
-    } else if (!email) {
+    } else if (!document.feedback.field.value) {
       alert("required");
       return false;
-    } else if (!body) {
+    } else if (!document.feedback.field.value) {
       alert("Please write a question");
       return false;
     }
@@ -74,7 +74,7 @@ export default function AddQuestion({ setQuestions }) {
       })
       .then(() => alert("Submitted"))
       .catch((err) => console.log(err));
-      handleClose()
+
   };
 
   const classes = useStyles();
@@ -102,23 +102,26 @@ export default function AddQuestion({ setQuestions }) {
         aria-describedby="simple-modal-description"
       >
         <div style={modalStyle} className={classes.paper}>
-          <form method="post" onSubmit="return checkform()">
+          <form  action="script.cgi" method="post" onSubmit="return checkform()">
             <input
               onChange={(e) => setName(e.target.value)}
               type="text"
               placeholder="Enter your name"
+              name="name"
             />
             <br />
             <input
               onChange={(e) => setEmail(e.target.value)}
               type="text"
               placeholder="Enter your email"
+              name="email"
             />
             <br />
             <input
               onChange={(e) => setBody(e.target.value)}
               type="text"
               placeholder="Enter your question"
+              name="body"
             />
           </form>
           <button type="button" onClick={handleSubmit}>
