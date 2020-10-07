@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeProductId } from '../reducers/productId';
 import { getReviewsForProduct } from '../../../helpers/apiHelpers.js';
+import { getReviewMetadataForProduct } from '../../../helpers/apiHelpers.js';
 import { getProductData } from '../../../helpers/productHelpers.js';
 import { changeProductData } from '../reducers/productData.js';
 import { changeReviewData } from '../reducers/reviewData.js';
+import { changeReviewMetadata } from '../reducers/reviewMetadata'
 var ChangeProduct = () => {
   var [id, setId] = useState('');
   var dispatch = useDispatch();
@@ -22,10 +24,14 @@ var ChangeProduct = () => {
         dispatch(changeReviewData(data));
       })
       .catch((error) => console.log(error));
+    getReviewMetadataForProduct(id)
+      .then((data) => {
+        dispatch(changeReviewMetadata(data));
+      })
+      .catch(err => console.error(err));
   };
 
   var updateId = (value) => {
-    //console.log(value);
     setId(value);
   };
   return (

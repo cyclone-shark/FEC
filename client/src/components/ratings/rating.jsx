@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector  } from 'react-redux';
 import { getReviewMetadataForProduct } from '../../../../helpers/apiHelpers';
-
+import './styles.css';
 import styled from 'styled-components';
+import RatingBars from './ratingBars';
+import ReviewList  from './reviewList'
 
 
 export const Rating = () => {
@@ -59,12 +61,19 @@ export const Rating = () => {
         overflow: hidden;
       }`;
     return (
-        <>
-          <h1>{avgRating}</h1>
-          <RatingStyle>
-            <div className="star-ratings-css"></div>
-          </RatingStyle>
-        </>
+      <div className="w3-container">
+        <div className="rating m3-row">
+          <div className="w3-col">
+              <RatingStyle>
+                <h1>{avgRating}</h1><div className="star-ratings-css"></div>
+              </RatingStyle>
+              <RatingBars/>
+          </div>
+          <div className="w3-col">
+            <ReviewList/>
+          </div>
+        </div>
+      </div>
     );
   }
 

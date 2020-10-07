@@ -35,6 +35,8 @@ var _reviewCharacteristicsData = _interopRequireDefault(require("./reducers/revi
 
 var _reviewCount = _interopRequireDefault(require("./reducers/reviewCount"));
 
+var _reviewMetadata = _interopRequireDefault(require("./reducers/reviewMetadata"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
@@ -47,6 +49,7 @@ var rootReducer = (0, _redux.combineReducers)({
   skuData: _skuData["default"],
   sku: _sku["default"],
   reviewData: _reviewData["default"],
+  reviewMetadata: _reviewMetadata["default"],
   reviewSortOrder: _reviewSortOrder["default"],
   reviewCharacteristcsData: _reviewCharacteristicsData["default"],
   reviewCount: _reviewCount["default"],
