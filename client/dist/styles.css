@@ -1,6 +1,7 @@
 .overview {
   display: grid;
   grid-template-areas:
+    '. left right maximize maximize'
     'c a a b b '
     'c a a b b ';
 }
@@ -17,20 +18,22 @@
   margin-left: auto;
   margin-right: auto;
 }
+.left {
+  grid-area: left;
+}
+.right {
+  grid-area: right;
+}
+.maximize {
+  grid-area: maximize;
+}
 .max-picture {
   height: 80vh;
 }
 .picture {
-  height: 60vh;
-}
-.img-magnifier-glass {
-  position: absolute;
-  border: 3px solid #000;
-  border-radius: 50%;
-  cursor: none;
-  /*Set the size of the magnifier glass:*/
-  width: 100px;
-  height: 100px;
+  cursor: zoom-in;
+  max-height: 60vh;
+  max-width: 60vw;
 }
 .carousel {
   height: 7vh;
@@ -42,4 +45,21 @@
 }
 .style-list {
   grid-area: b;
+}
+.img-magnifier-container {
+  position: relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 100px;
+  height: 100px;
+}
+.temp {
+  cursor: zoom-in;
+  position: absolute;
 }
