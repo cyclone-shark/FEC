@@ -42,25 +42,27 @@ const SizeSelector = (props) => {
 
   return (
     <React.Fragment>
-      <select
-        id='size'
-        onChange={(e) => {
-          updateSizeAndSku(e.target.value);
-        }}
-      >
-        <option name='default' value=''>
-          Select Size
-        </option>
-        {sizes.map((size) => {
-          return (
-            <option name={'sku' + size} value={size}>
-              {size}
-            </option>
-          );
-        })}
-      </select>
-      {/* quantities = {'M': 7, etc...} */}
-      <QuantitySelector />
+      <div className='size'>
+        <select
+          id='size'
+          onChange={(e) => {
+            updateSizeAndSku(e.target.value);
+          }}
+        >
+          <option name='default' value=''>
+            Select Size
+          </option>
+          {sizes.map((size) => {
+            return (
+              <option name={'sku' + size} value={size}>
+                {size}
+              </option>
+            );
+          })}
+        </select>
+        {/* quantities = {'M': 7, etc...} */}
+        <QuantitySelector />
+      </div>
     </React.Fragment>
   );
 };

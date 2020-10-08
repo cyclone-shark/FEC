@@ -27,7 +27,7 @@ var StyleList = () => {
 
   return (
     <React.Fragment>
-      <div>STYLE > {currentStyle}</div>
+      <div class='style-info'>STYLE > {currentStyle}</div>
       <div class='style-list'>
         {data
           ? data.map((styleData) => {

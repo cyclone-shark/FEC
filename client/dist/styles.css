@@ -1,31 +1,90 @@
 .overview {
+  border-style: solid;
+  height: 60%;
+  max-width: 60%;
   display: grid;
   grid-template-areas:
-    'c a a b b '
-    'c a a b b ';
+    'carousel left picture right maximize '
+    'carousel left picture right stars '
+    'carousel left picture right category '
+    'carousel left picture right product '
+    'carousel left picture right price  '
+    'carousel left picture right style-info  '
+    'carousel left picture right style-list  '
+    'carousel left picture right size  '
+    'carousel left picture right cart  ';
 }
-.a {
-  grid-area: a;
+.cart {
+  grid-area: cart;
 }
-.b {
-  grid-area: b;
+.category {
+  display: grid;
+  grid-area: category;
+
+  position: relative;
 }
-.c {
-  grid-area: c;
-  max-height: 60vh;
+.product-name {
+  grid-area: product;
+  position: relative;
+}
+.left {
+  grid-area: left;
+  height: 100%;
+}
+.right {
+  grid-area: right;
+  height: 100%;
+}
+.maximize {
+  grid-area: maximize;
+}
+.price {
+  grid-area: price;
+}
+.style-info {
+  grid-area: style-info;
+}
+.size {
+  grid-area: size;
+}
+.max-picture {
+  grid-area: left;
+  position: relative;
+  overflow-y: scroll;
 }
 .picture {
-  max-width: 100%;
-  max-height: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  grid-area: picture;
+  position: relative;
+  cursor: zoom-in;
+  display: flex;
+  height: 100%;
 }
 .carousel {
-  max-height: 100px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-area: carousel;
 }
+.carousel-entry {
+  height: 7vh;
+  position: relative;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .style-entry {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 3vw;
+  height: 5vh;
+  position: relative;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .style-list {
-  grid-area: b;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-area: style-list;
 }

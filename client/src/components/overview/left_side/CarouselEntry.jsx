@@ -7,21 +7,20 @@ var CarouselEntry = (props) => {
   const dispatch = useDispatch();
 
   var changePhoto = (index) => {
-    dispatch(changePhotoIndex(index));
+    console.log(index);
+    dispatch(changePhotoIndex(Number(index)));
     dispatch(changeCurrentPhoto(props.photo.url));
   };
 
   return (
-    <div id='c'>
-      <img
-        id={props.index}
-        className='carousel'
-        src={props.photo.thumbnail_url}
-        onClick={(e) => {
-          changePhoto(e.target.id);
-        }}
-      ></img>
-    </div>
+    <img
+      id={props.index}
+      className='carousel-entry'
+      src={props.photo.thumbnail_url}
+      onClick={(e) => {
+        changePhoto(e.target.id);
+      }}
+    ></img>
   );
 };
 
