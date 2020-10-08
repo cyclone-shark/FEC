@@ -40,7 +40,7 @@ const getReviewMetadataForProduct = (productId) => {
       .catch((err) => console.error(err))
   )
 };
-/* Add a Review for a Product 
+/* Add a Review for a Product
 This API call takes Body Parameters:
 
 | Parameter       | Type   | Description                                                  |
@@ -62,7 +62,7 @@ const addReview = (reviewObj) => {
 const markReviewHelpful = (reviewId) => {
   return axios.put(`http://18.224.37.110/reviews/${reviewId}/helpful`);
 };
-//Updates a review to show it was reported. 
+//Updates a review to show it was reported.
 const reportReview = (reviewId) =>  {
   return axios.put(`http://18.224.37.110/reviews/${reviewId}/report`);
 };
@@ -72,9 +72,9 @@ const reportReview = (reviewId) =>  {
 //   axios.get(`http://18.224.37.110/products/${id}/related`)
 // }
 
-export { 
-  getAllProducts, 
-  getProduct, 
+export {
+  getAllProducts,
+  getProduct,
   getProductStyles,
   getReviewMetadataForProduct,
   getReviewsForProduct,
