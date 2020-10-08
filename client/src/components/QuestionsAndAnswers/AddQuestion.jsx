@@ -49,22 +49,22 @@ export default function AddQuestion({ setQuestions }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  function checkform() {
-    if (!document.feedback.field.value) {
+  const checkform = () => {
+    console.log('hello')
+    if (name === '') {
       alert("please enter you name");
       return false;
-    } else if (!document.feedback.field.value) {
+    } else if (email === '') {
       alert("required");
       return false;
-    } else if (!document.feedback.field.value) {
+    } else if (body === '') {
       alert("Please write a question");
       return false;
     }
-    return true;
+    handleSubmit();
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     axios
       .post("http://18.224.37.110/qa/questions", {
         body: body,
@@ -72,7 +72,7 @@ export default function AddQuestion({ setQuestions }) {
         email: email,
         product_id: id,
       })
-      .then(() => alert("Submitted"))
+      .then(() => alert('Submitted!'))
       .catch((err) => console.log(err));
 
   };
@@ -102,7 +102,7 @@ export default function AddQuestion({ setQuestions }) {
         aria-describedby="simple-modal-description"
       >
         <div style={modalStyle} className={classes.paper}>
-          <form  action="script.cgi" method="post" onSubmit="return checkform()">
+          <form  action="script.cgi" method="post" >
             <input
               onChange={(e) => setName(e.target.value)}
               type="text"
@@ -124,7 +124,7 @@ export default function AddQuestion({ setQuestions }) {
               name="body"
             />
           </form>
-          <button type="button" onClick={handleSubmit}>
+          <button type="button"  onClick={checkform}>
             Submit
           </button>
           <button onClick={handleClose}> Close </button>

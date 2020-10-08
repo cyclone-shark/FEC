@@ -6,6 +6,7 @@ import SearchBar from './SearchBar.jsx';
 import List from './List.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import ShowTwoQuestions from './ShowTwoQuestions';
+import Modal from './Modal.jsx';
 
 const QAndA = () => {
 
@@ -37,6 +38,7 @@ const QAndA = () => {
       <SearchBar />
       <List questions={questions} />
       <AddQuestion setQuestions={setQuestions}/>
+      <Modal questions={questions} />
     </div>
   );
 };
