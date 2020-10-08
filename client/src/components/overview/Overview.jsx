@@ -6,7 +6,32 @@ import $ from 'jquery';
 var Overview = () => {
   var photo = useSelector((state) => state.currentPhoto);
   var [toggle, setToggle] = useState(false);
+  var clickHandler = () => {
+    if (!toggle) {
+      maximize();
+    } else {
+      minimize();
+    }
+  };
 
+  var maximize = () => {
+    $('.overview').animate({
+      height: '90%',
+      maxWidth: '90%',
+    });
+    $('.overview').css({
+      cursor: 'crosshair',
+    });
+    setToggle(!toggle);
+  };
+
+  var minimize = () => {
+    $('.overview').animate({ height: '60%', maxWidth: '60%' });
+    $('.overview').css({
+      cursor: 'zoom-in',
+    });
+    setToggle(!toggle);
+  };
   return (
     <div
       className='overview'
@@ -24,8 +49,11 @@ var Overview = () => {
       //   }
       // }}
     >
-      <img className='img-magnifier-glass'></img>
-      <MainView toggle={toggle} setToggle={setToggle} />
+      <MainView
+        toggle={toggle}
+        clickHandler={clickHandler}
+        setToggle={setToggle}
+      />
       <SideView />
     </div>
   );

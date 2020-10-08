@@ -5,7 +5,7 @@ var Carousel = (props) => {
   var photos = useSelector((state) => state.styleData.photos);
 
   return (
-    <div>
+    <div className='carousel'>
       {photos
         ? photos.map((photo, index) => {
             return <CarouselEntry index={index} photo={photo} />;
