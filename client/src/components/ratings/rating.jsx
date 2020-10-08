@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getReviewMetadataForProduct } from '../../../../helpers/apiHelpers';
+import './styles.css';
 import styled from 'styled-components';
+import RatingBars from './ratingBars';
+import ReviewList  from './reviewList'
 
 export const Rating = () => {
   var productId = useSelector((state) => state.productId);
@@ -26,43 +29,49 @@ export const Rating = () => {
   useEffect(() => {
     getAverageRating();
   }, [productId]);
-
-  const RatingStyle = styled.div`
-    .star-ratings-css {
-      unicode-bidi: bidi-override;
-      color: #c5c5c5;
-      font-size: 25px;
-      height: 25px;
-      width: 125px;
-      margin: 0 auto;
-      position: relative;
-      text-shadow: 0 1px 0 #a2a2a2;
-    }
-    .star-ratings-css::before {
-      content: '★★★★★';
-      opacity: 0.3;
-    }
-    .star-ratings-css::after {
-      color: gold;
-      content: '★★★★★';
-      text-shadow: 0 1px 0 red;
-      position: absolute;
-      z-index: 1;
-      display: block;
-      left: 0;
-      top: 0;
-      width: ${(avgRating / 5.0) * 100}%;
-      overflow: hidden;
-    }
-  `;
-  return (
-    <>
-      <h1>{avgRating}</h1>
-      <RatingStyle>
-        <div className='star-ratings-css'></div>
-      </RatingStyle>
-    </>
-  );
-};
+  
+    const RatingStyle = styled.div`
+      .star-ratings-css {
+        unicode-bidi: bidi-override;
+        color: #c5c5c5;
+        font-size: 25px;
+        height: 25px;
+        width: 125px;
+        margin: 0 auto;
+        position: relative;
+        text-shadow: 0 1px 0 #a2a2a2;
+      }
+      .star-ratings-css::before {
+        content: '★★★★★';
+        opacity: .3;
+      }
+      .star-ratings-css::after {
+        color: gold;
+        content: '★★★★★';
+        text-shadow: 0 1px 0 red;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        left: 0;
+        top: 0;
+        width: ${(avgRating/5.0) * 100}%;
+        overflow: hidden;
+      }`;
+    return (
+      <div className="w3-container">
+        <div className="rating m3-row">
+          <div className="w3-col">
+              <RatingStyle>
+                <h1>{avgRating}</h1><div className="star-ratings-css"></div>
+              </RatingStyle>
+              <RatingBars/>
+          </div>
+          <div className="w3-col">
+            <ReviewList/>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
 export default Rating;
