@@ -1,36 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector  } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getReviewMetadataForProduct } from '../../../../helpers/apiHelpers';
-
+import './styles.css';
 import styled from 'styled-components';
-
+import RatingBars from './ratingBars';
+import ReviewList  from './reviewList'
 
 export const Rating = () => {
   var productId = useSelector((state) => state.productId);
   var [avgRating, changeAvgRating] = useState(0);
 
-
   const getAverageRating = () => {
-    getReviewMetadataForProduct(productId)
-      .then((meta) => {
-        // const len = reviews.length;
+    getReviewMetadataForProduct(productId).then((meta) => {
+      // const len = reviews.length;
 
-        var ratings = meta.ratings;
-        var numRatings = 0;
-        var sumRatings = 0;
-        for (var key of Object.keys(ratings))  {
-          sumRatings += (Number(key) * ratings[key]);
-          numRatings += ratings[key];
-        }
-        var avg = Math.round((sumRatings/numRatings) * 10) / 10;
-        changeAvgRating(avg);
-      })
+      var ratings = meta.ratings;
+      var numRatings = 0;
+      var sumRatings = 0;
+      for (var key of Object.keys(ratings)) {
+        sumRatings += Number(key) * ratings[key];
+        numRatings += ratings[key];
+      }
+      var avg = Math.round((sumRatings / numRatings) * 10) / 10;
+      changeAvgRating(avg);
+    });
   };
 
-  useEffect(() =>  {
+  useEffect(() => {
     getAverageRating();
   }, [productId]);
-
+  
     const RatingStyle = styled.div`
       .star-ratings-css {
         unicode-bidi: bidi-override;
@@ -59,12 +58,19 @@ export const Rating = () => {
         overflow: hidden;
       }`;
     return (
-        <>
-          <h1>{avgRating}</h1>
-          <RatingStyle>
-            <div className="star-ratings-css"></div>
-          </RatingStyle>
-        </>
+      <div className="w3-container">
+        <div className="rating m3-row">
+          <div className="w3-col">
+              <RatingStyle>
+                <h1>{avgRating}</h1><div className="star-ratings-css"></div>
+              </RatingStyle>
+              <RatingBars/>
+          </div>
+          <div className="w3-col">
+            <ReviewList/>
+          </div>
+        </div>
+      </div>
     );
   }
 

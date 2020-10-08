@@ -1,0 +1,19 @@
+.progress-bar {
+  position: relative;
+  height: 10px;
+  width: 200px;
+  border: 1px solid #555454;
+  background: lightgray;
+}
+.filler {
+  background: #6ff21d;
+  height: 100%;
+  transition: width .2s ease-in;
+};
+
+.rating-container {
+  display: grid;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+}

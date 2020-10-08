@@ -84,24 +84,30 @@ const ReviewList = () => {
     };
     
     return (
-      <React.Fragment>
-      <b>{tempReviewsCount} Reviews</b>
-      <select
-        name='sortReviews'
-        id='sortReviews'
-        onChange={(e) => {updateSortOrder(e.target.value)}}>
-        <option selected='selected' value='relevance'>Relevance</option>
-        <option value='helpful'>Helpfulness</option>
-        <option value='newest'>Newest</option>
-      </select>
-      <ul>
-        {reviews
-          ? reviews.map((review) => {
-              return <ReviewListEntry review={review} key={review.review_id}/>;
-            })     
-          : null}
-      </ul>
-      </React.Fragment>
+      <div className="w3-conatiner w3-cell">
+        <b>{tempReviewsCount} reviews, sorted by</b>
+        <select
+          name='sortReviews'
+          id='sortReviews'
+          onChange={(e) => {updateSortOrder(e.target.value)}}>
+          <option defaultValue='selected' value='relevance'>Relevance</option>
+          <option value='helpful'>Helpfulness</option>
+          <option value='newest'>Newest</option>
+        </select>
+        <ul className="w3-ul w3-card" style={{width: "50%"}}>
+          {reviews
+            ? reviews.map((review) => {
+                return <li className="w3-padding-small"><ReviewListEntry review={review} key={review.review_id}/></li>;
+              })     
+            : null}
+            <div class="w3-bar">
+              <center>
+                <button className="w3-button w3-white w3-border w3-round-xlarge">MORE REVIEWS</button>
+                <button className="w3-button w3-white w3-border w3-round-xlarge">ADD A REVIEW +</button>
+              </center>
+            </div>
+        </ul>
+      </div>
     );
 }
 
