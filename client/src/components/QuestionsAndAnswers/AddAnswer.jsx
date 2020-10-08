@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 //-------------------------------------------------------------
 
-export default function AnswerModal({ setQuestions }) {
+export default function AddAnswer({ setQuestions }) {
   const id = useSelector((state) => state.productId);
   const [body, setBody] = useState("");
   const [name, setName] = useState("");

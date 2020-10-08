@@ -1,44 +1,38 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
-import Pictures from "./Pictures.jsx";
+import React, { useState, useEffect} from "react";
 
 
-const ShowAnswers = ({ renderedList}) => {
-  console.log('rendered list',renderedList)
-  //var array = renderedList.slice(0, 2); //show first two
+const ShowAnswers = ({renderedAnswers}) => {
 
-  const [count, setCount] = useState(2);
-  const [toggle, setToggle] = useState(false);
-  const [longerList, setLongerList] = useState([]);
-  const [listLength, setListLength] = useState(0)
-
-
+  const [show, setShow] = useState(false)
+  const [answers, setAnswers] = useState([])
+  const [answerLength, setAnswerLength] = useState(0)
 
   const handleClick = () => {
-    if (listLength > 2) {
-      setCount(count + 2);
-      var temp = renderedList.slice(0, count);
-      setLongerList(temp);
+    if (answerLength > 2) {
+      setAnswers(renderedAnswers)
+      console.log('hit')
     }
   };
 
 
   useEffect (() => {
-    setLongerList(renderedList.slice(0, 4))
-    setListLength(renderedList.length)
 
-    if (renderedList.length > 2) {
-      setToggle(true)
+    setAnswers(renderedAnswers.slice(0, 2))
+    setAnswerLength(renderedAnswers.length)
+
+    if (renderedAnswers.length > 2) {
+      setShow(true)
     }
-  }, [renderedList])
+  },[renderedAnswers])
+
 
   return (
     <div>
       <div>
-
           <div>
-            <div> {longerList} </div>
-            {toggle ?
-            <button onClick={handleClick}> MORE ANSWERED QUESTIONS</button>
+            <div> {answers} </div>
+            {show ?
+            <button onClick={handleClick}> LOAD MORE ANSWERS </button>
             : null }
           </div>
 
@@ -46,5 +40,6 @@ const ShowAnswers = ({ renderedList}) => {
     </div>
   );
 };
+
 
 export default ShowAnswers;
