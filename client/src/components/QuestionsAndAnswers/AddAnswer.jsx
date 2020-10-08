@@ -42,40 +42,11 @@ const useStyles = makeStyles((theme) => ({
 
 //-------------------------------------------------------------
 
-export default function AddQuestion({ setQuestions }) {
-
+export default function AddAnswer({ setQuestions }) {
   const id = useSelector((state) => state.productId);
-
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
-  const checkform = () => {
-    if (name === '') {
-      alert("please enter you name");
-      return false;
-    } else if (email === '') {
-      alert("required");
-      return false;
-    } else if (body === '') {
-      alert("Please write a question");
-      return false;
-    }
-    handleSubmit();
-  }
-
-  const handleSubmit = () => {
-    axios
-      .post("http://18.224.37.110/qa/questions", {
-        body: body,
-        name: name,
-        email: email,
-        product_id: id,
-      })
-      .then(() => alert('Submitted!'))
-      .catch((err) => console.log(err));
-
-  };
 
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -90,10 +61,35 @@ export default function AddQuestion({ setQuestions }) {
     setOpen(false);
   };
 
+  const checkform = () => {
+    console.log('hello')
+    if (name === '') {
+      alert("please enter you name");
+      return false;
+    } else if (email === '') {
+      alert("required");
+      return false;
+    } else if (body === '') {
+      alert("Please write a question");
+      return false;
+    }
+    onHandleSubmit();
+  }
+
+  const onHandleSubmit = () => {
+    axios.post(`http://18.224.37.110/qa/questions/${id}/answers`, {
+      body: body,
+      name: name,
+      email: email
+    }).then(() => alert('Answer Submitted!')).catch(err => console.log(err))
+  }
+
+
+
   return (
     <div>
       <button type="button" onClick={handleOpen}>
-        Ask Your Question
+        Add Answer
       </button>
       <Modal
         open={open}
@@ -120,7 +116,7 @@ export default function AddQuestion({ setQuestions }) {
             <input
               onChange={(e) => setBody(e.target.value)}
               type="text"
-              placeholder="Enter your question"
+              placeholder="Enter your answer"
               name="body"
             />
           </form>
@@ -133,3 +129,4 @@ export default function AddQuestion({ setQuestions }) {
     </div>
   );
 }
+
