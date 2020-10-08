@@ -3,10 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import ShowAnswers from "./ShowAnswers";
-import Pictures from './Pictures';
-import Helpfulness from "./Helpfulness";
 import AnswerModal from './AnswerModal';
-import { useSelector } from "react-redux";
+import LoadAnswers from './LoadAnswers';
+import { useSelector, useDispatch } from "react-redux";
+import upDateList from '../../reducers/QA.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +20,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const List = ({ questions,  }) => {
+
   //<Helpfulness helpful={question.question_helpfulness}/>
+  //Picture
   const id = useSelector((state) => state.productId);
 
   const onHandleSubmit = () => {
@@ -34,6 +36,11 @@ const List = ({ questions,  }) => {
 
 
   const classes = useStyles();
+
+  //const dispatch = useDispatch();
+  //dispatch(upDateList(renderedList))
+  //const list = useSelector(state => state.QAList)
+
 
   const renderedList = questions
     .sort((a, b) => b.question_helpfulness - a.question_helpfulness)
@@ -49,8 +56,8 @@ const List = ({ questions,  }) => {
               </Grid>
               <Grid item xs>
                 <Paper className={classes.paper}>
-                  <span>{question.question_helpfulness} |</span>
-                  <span>yes</span>
+                  <span> helpful? {question.question_helpfulness} |</span>
+                  <span>Yes</span>
                 </Paper>
               </Grid>
               <Grid item xs>

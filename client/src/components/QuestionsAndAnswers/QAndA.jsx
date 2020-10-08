@@ -5,7 +5,7 @@ import axios from "axios";
 import SearchBar from './SearchBar.jsx';
 import List from './List.jsx';
 import AddQuestion from './AddQuestion.jsx';
-import ShowTwoQuestions from './ShowTwoQuestions';
+import LoadAnswers from './LoadAnswers';
 import Modal from './Modal.jsx';
 
 const QAndA = () => {

@@ -13,7 +13,7 @@ const array = [1,2,3,4,5,6,7,8,9,10]
       setTest(temp)
       setCount(count + 2)
     }
-  }
+
   console.log(count)
   console.log(test)
 

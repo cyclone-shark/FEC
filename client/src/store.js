@@ -13,6 +13,7 @@ import reviewDataReducer from './reducers/reviewData';
 import reviewSortOrderReducer from './reducers/reviewSortOrder';
 import reviewCharacteristicsDataReducer from './reducers/reviewCharacteristicsData';
 import reviewCountReducer from './reducers/reviewCount';
+import QA from './reducers/QA';
 
 const rootReducer = combineReducers({
   productData: productDataReducer,
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   reviewCharacteristcsData: reviewCharacteristicsDataReducer,
   reviewCount: reviewCountReducer,
   currentPhoto: currentPhotoReducer,
+  QAList: QA
 });
 
 const store = configureStore({

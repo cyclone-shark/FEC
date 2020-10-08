@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 //-------------------------------------------------------------
 
 export default function AddQuestion({ setQuestions }) {
+
   const id = useSelector((state) => state.productId);
 
   const [body, setBody] = useState("");
