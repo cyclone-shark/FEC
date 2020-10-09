@@ -17,6 +17,8 @@ import { getReviewMetadataForProduct } from '../../../helpers/apiHelpers.js';
 import QAndA from './QuestionsAndAnswers/QAndA';
 import ChangeProduct from './ChangeProduct';
 
+import Stars, { _5Stars } from './ratings/_5Stars';
+
 class App extends React.Component {
   componentDidMount() {
     getProductData(1)
@@ -37,15 +39,15 @@ class App extends React.Component {
   }
 
   render() {
-    const { name } = this.props;
     return (
       <>
+        {/* <_5Stars percentage={33}/> */}
         <ChangeProduct />
         <OverView />
-        <span className='ratings-container'>
-          <Rating />
-        </span>
         <QAndA />
+        <div className="d">
+          <Rating />
+        </div>
       </>
     );
   }

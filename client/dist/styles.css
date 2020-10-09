@@ -113,3 +113,15 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-area: style-list;
 }
+.filler {
+  background: #6ff21d;
+  height: 100%;
+  transition: width .2s ease-in;
+};
+
+.ratings-container {
+  display: grid;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+}

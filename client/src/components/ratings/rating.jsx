@@ -48,29 +48,30 @@ export const Rating = () => {
       .star-ratings-css::after {
         color: gold;
         content: '★★★★★';
-        text-shadow: 0 1px 0 red;
+        text-shadow: 0 1px 0 gold;
         position: absolute;
         z-index: 1;
         display: block;
         left: 0;
         top: 0;
         width: ${(avgRating/5.0) * 100}%;
-        overflow: hidden;
+        overflow: auto;
       }`;
     return (
-      <div className="w3-container">
-        <div className="rating m3-row">
-          <div className="w3-col">
-              <RatingStyle>
-                <h1>{avgRating}</h1><div className="star-ratings-css"></div>
-              </RatingStyle>
-              <RatingBars/>
-          </div>
-          <div className="w3-col">
-            <ReviewList/>
+        <div className="w3-container" style={{width: "100%"}}><h1>Ratings and Reviews</h1>
+          <div className="w3-container m3-row">
+            <div className="w3-cell" width={{width: "30%"}}>
+                <RatingStyle>
+                  <center><div className="star-ratings-css"></div></center>
+                  <center><h1><div className="m3-cell">{avgRating}</div></h1></center>
+                </RatingStyle>
+                <RatingBars/>
+            </div>
+            <div className="w3-cell" width={{width: "90%"}}>
+              <ReviewList/>
+            </div>
           </div>
         </div>
-      </div>
     );
   }
 
