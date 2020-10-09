@@ -43,7 +43,7 @@ class App extends React.Component {
       <>
         {/* <_5Stars percentage={33}/> */}
         <ChangeProduct />
-        <Overiew />
+        <Overview />
         <QAndA />
         <div className='d'>
           <Rating />
