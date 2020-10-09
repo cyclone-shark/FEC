@@ -2,6 +2,7 @@ import React from "react";
 import Helpful from "./Helpful";
 import Answers from './Answers';
 import AddAnswer from './AddAnswer';
+import ShowQuestions from './ShowQuestions'
 
 
 
@@ -33,7 +34,9 @@ const List = ({ questions }) => {
       </div>
     )});
 
-  return (<div> {renderedList}</div>)
+  return (<div>
+     <ShowQuestions renderedList={renderedList}/>
+     </div>)
 }
 
 export default List;
