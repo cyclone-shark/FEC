@@ -31,13 +31,13 @@ const RatingBars = () => {
   },[productId]);//ran when productId changes
 
   return (
-    <div>
+    <div className="w3-bar-block"  style={{width: "50%"}}>
       {ratings
         ? [1,2,3,4,5].map((value) => {
             return (
               <>
                 {ratings[value]
-                  ? <div className='bar'>
+                  ? <div className="w3-bar-item">
                       {value} Stars<RatingsProgressBar percentage={(ratings[value]/ratingTotal) * 100}/><br/>
                     </div>
                   : null

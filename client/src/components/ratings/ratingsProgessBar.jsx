@@ -6,7 +6,7 @@ import './styles.css';
 const RatingsProgressBar = (props) => {
   return (
       <div className="progress-bar">
-        <Filler percentage={props.percentage} />
+        <Filler percentage={props.percentage}/>
       </div>
     )
 };

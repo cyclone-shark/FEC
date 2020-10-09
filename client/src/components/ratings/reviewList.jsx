@@ -18,7 +18,23 @@ const ReviewList = () => {
   var productId = useSelector((state) => state.productId);
   var [tempReviews, changeReviews] = useState(reviews);
   var [tempReviewsCount, changeReviewCount] = useState(reviews.count);
+
+  ///handle two at a time
+  const [toggle, setToggle] = useState(false);
+  const [longerList, setLongerList] = useState([]);
+  const [listLength, setListLength] = useState(0);
+  const [count, setCount] = useState(2);
   
+
+  //used to handle 2 + answers
+  const handleClick = () => {
+    if (reviewsCount > 2) {
+      setCount(count + 2);
+      var temp = reviews.slice(0, count);
+      setLongerList(temp);
+      setToggle(true);
+    }
+  };
   
   useEffect(() => {
     //ran once and only once
@@ -47,6 +63,19 @@ const ReviewList = () => {
       .catch(err => console.error(err));
   }
   
+  useEffect (() => {
+    setLongerList(reviews.slice(0, 2))
+    setListLength(reviews.length)
+
+    //some safety checks
+    console.log(listLength)
+    console.log('reviews->', reviews)
+
+    if (reviewsCount.length > 2) {
+      setToggle(true)
+    }
+  }, [reviewsCount]);
+
   useEffect(() => {
     updateReviews();
     console.log('IN USE EFFECT');
@@ -82,31 +111,36 @@ const ReviewList = () => {
     const updateSortOrder = (sortBy) => {
       store.dispatch(changeReviewSortOrder(sortBy));
     };
+
+    
     
     return (
-      <div className="w3-conatiner w3-cell">
-        <b>{tempReviewsCount} reviews, sorted by</b>
-        <select
-          name='sortReviews'
-          id='sortReviews'
-          onChange={(e) => {updateSortOrder(e.target.value)}}>
-          <option defaultValue='selected' value='relevance'>Relevance</option>
-          <option value='helpful'>Helpfulness</option>
-          <option value='newest'>Newest</option>
-        </select>
-        <ul className="w3-ul w3-card" style={{width: "50%"}}>
-          {reviews
-            ? reviews.map((review) => {
-                return <li className="w3-padding-small"><ReviewListEntry review={review} key={review.review_id}/></li>;
-              })     
-            : null}
-            <div class="w3-bar">
-              <center>
-                <button className="w3-button w3-white w3-border w3-round-xlarge">MORE REVIEWS</button>
-                <button className="w3-button w3-white w3-border w3-round-xlarge">ADD A REVIEW +</button>
-              </center>
-            </div>
-        </ul>
+      <div className="w3-container w3-bar-block">
+        <div className="w3-container w3-bar-item">
+          <b> {tempReviewsCount===1 ? `${tempReviewsCount} review` :  `${tempReviewsCount} reviews` } , sorted by </b>
+          <select className="w3-select w3-cell"
+            style={{float: 'right'}}
+            name='options'
+            id='sortReviews'
+            onChange={(e) => {updateSortOrder(e.target.value)}}>
+            <option defaultValue='selected' value='relevance'>Relevance</option>
+            <option value='helpful'>Helpfulness</option>
+            <option value='newest'>Newest</option>
+          </select>
+         </div> 
+         <ul className="w3-ul w3-bar-item">
+              {reviews
+                ? reviews.map((review) => {
+                    return <li><ReviewListEntry review={review} key={review.review_id}/></li>;
+                  })     
+                : null}
+          </ul>
+        <center className="w3-container w3-bar-item">
+        {toggle ?
+            <button className="w3-button w3-white w3-border w3-round-xlarge" onClick={handleClick}>MORE REVIEWS</button>
+            : null }
+          <button className="w3-button w3-white w3-border w3-round-xlarge">ADD A REVIEW +</button>
+        </center>
       </div>
     );
 }
