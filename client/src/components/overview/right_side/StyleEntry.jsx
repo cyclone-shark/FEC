@@ -8,12 +8,13 @@ import { changeCurrentPhoto } from '../../../reducers/currentPhoto';
 import { changePhotoIndex } from '../../../reducers/photoIndex';
 import { changeCurrentPrice } from '../../../reducers/currentPrice';
 import { changeSalePrice } from '../../../reducers/salePrice';
+import { changeCarouselIndex } from '../../../reducers/carouselIndex';
 var StyleEntry = (props) => {
   //when i click a new entry I want to update the current sku with the selected styleSize and product style
   const dispatch = useDispatch();
   const allStyleData = useSelector((state) => state.productData.results);
   const selectedSize = useSelector((state) => state.styleSize);
-
+  const currStyle = useSelector((state) => state.productStyle);
   var changeData = () => {
     var styleId = props.style.style_id;
     var styleData = {};
@@ -24,8 +25,8 @@ var StyleEntry = (props) => {
       }
     }
 
+    dispatch(changeCarouselIndex(0));
     dispatch(changeCurrentPrice(styleData.original_price));
-
     dispatch(changeSalePrice(styleData.sale_price));
     dispatch(changePhotoIndex(0));
     dispatch(changeCurrentPhoto(styleData.photos[0].url));
@@ -48,10 +49,18 @@ var StyleEntry = (props) => {
       }
     }
   };
+  var borderStyle =
+    props.style.style_id === currStyle
+      ? { borderStyle: 'solid' }
+      : { borderStyle: 'none' };
 
   return (
     <div value={props.style.style_id} onClick={(e) => changeData()}>
-      <img className='style-entry' src={props.style.photos[0].thumbnail_url} />
+      <img
+        className='style-entry'
+        style={borderStyle}
+        src={props.style.photos[0].thumbnail_url}
+      />
     </div>
   );
 };

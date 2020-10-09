@@ -5,7 +5,9 @@ const AddToCart = (props) => {
   const sku = useSelector((state) => state.sku);
   return (
     <React.Fragment>
-      <button className='cart'>Add To Cart</button>
+      <button className='cart' onClick={() => console.log(sku)}>
+        Add To Cart
+      </button>
     </React.Fragment>
   );
 };

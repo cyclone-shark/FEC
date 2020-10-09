@@ -10,10 +10,7 @@ var MainView = (props) => {
   var styleData = useSelector((state) => state.styleData);
   var index = useSelector((state) => state.photoIndex);
   var [image, setImage] = useState();
-  var [mouse, setMouse] = useState();
-  var [glass, setGlass] = useState();
 
-  var [magToggle, setMagToggle] = useState(false);
   useEffect(() => {
     if (styleData.photos) setImage(styleData.photos[index].url);
   }, [index]);
@@ -22,39 +19,12 @@ var MainView = (props) => {
     if (styleData.photos) setImage(styleData.photos[index].url);
   }, [styleData]);
 
-  var clickHandler = () => {
-    if (!props.toggle) {
-      maximize();
-    } else {
-      minimize();
-    }
-  };
-
-  var maximize = () => {
-    $('.picture').animate({
-      maxHeight: '90vh',
-      maxWidth: '90vw',
-    });
-    $('.picture').css({
-      cursor: 'crosshair',
-    });
-    props.setToggle(!props.toggle);
-  };
-
-  var minimize = () => {
-    $('.picture').animate({ maxHeight: '60vh', maxWidth: '60vw' });
-    $('.picture').css({
-      cursor: 'zoom-in',
-    });
-    props.setToggle(!props.toggle);
-  };
-
   return (
-    <React.Fragment>
+    <div className='main-view'>
+      <Carousel />
       <LeftButton />
 
       <img
-        id='hellopicture'
         className='picture'
         src={image}
         onClick={() => {
@@ -62,13 +32,11 @@ var MainView = (props) => {
         }}
       ></img>
 
-      <button className='maximize' onClick={() => props.clickHandler()}>
+      {/* <button className='maximize' onClick={() => props.clickHandler()}>
         maximize
-      </button>
+      </button> */}
       <RightButton />
-
-      <Carousel className='c' />
-    </React.Fragment>
+    </div>
   );
 };
 

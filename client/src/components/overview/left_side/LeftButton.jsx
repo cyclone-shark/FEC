@@ -23,7 +23,7 @@ var LeftButton = (props) => {
 
   return (
     <button className='left' onClick={() => clickHandler()}>
-      LEFT
+      &#8592;
     </button>
   );
 };

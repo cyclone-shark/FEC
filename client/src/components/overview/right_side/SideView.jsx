@@ -65,20 +65,25 @@ var SideView = () => {
 
   return (
     <React.Fragment>
-      <div className='w3-container'>
-        <div className='rating m3-row'>
-          <div className='w3-col'>
-            <RatingStyle>
-              <div className='star-ratings-css'></div>
-            </RatingStyle>
+      <div className='side-view'>
+        <div className='stars'>
+          <div className='w3-container'>
+            <div className='rating m3-row'>
+              <div className='w3-col'>
+                <RatingStyle>
+                  <div className='star-ratings-css'></div>
+                </RatingStyle>
+              </div>
+            </div>
           </div>
+          read all reviews
         </div>
+        <ProductName />
+        <StyleList />
+        <SizeSelector />
+        <Price />
+        <AddToCart />
       </div>
-      <ProductName />
-      <StyleList />
-      <SizeSelector />
-      <Price />
-      <AddToCart />
     </React.Fragment>
   );
 };
