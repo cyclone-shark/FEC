@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 import store from '../store.js';
-import OverView from './overview/OverView.jsx';
+import OverView from './overview/Overview.jsx';
 import StyleList from './overview/right_side/StyleList.jsx';
 import { changeProductData } from '../reducers/productData.js';
 import { changeReviewData } from '../reducers/reviewData.js';
@@ -43,9 +43,9 @@ class App extends React.Component {
       <>
         {/* <_5Stars percentage={33}/> */}
         <ChangeProduct />
-        <OverView />
+        <Overiew />
         <QAndA />
-        <div className="d">
+        <div className='d'>
           <Rating />
         </div>
       </>

@@ -45,7 +45,7 @@ const QAndA = () => {
 
   var interactionHandler = (e) => {
     var element = String(e.target);
-    var widget = 'ratings';
+    var widget = 'q&a';
     var time = String(new Date(new Date().getTime()));
     axios
       .post(`http://18.224.37.110/interactions`, {
