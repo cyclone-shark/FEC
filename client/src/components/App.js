@@ -44,9 +44,6 @@ class App extends React.Component {
         {/* <_5Stars percentage={33}/> */}
         <ChangeProduct />
         <OverView />
-        <span className='ratings-container'>
-          <Rating />
-        </span>
         <QAndA />
         <div className="d">
           <Rating />
