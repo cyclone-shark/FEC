@@ -1,6 +1,8 @@
 import React from "react";
 import Pictures from './Pictures';
 import ShowAnswers from './showanswers';
+import Moment from 'react-moment';
+import 'moment-timezone';
 //import AddAnswer from
 
 
@@ -16,7 +18,7 @@ const Answers = ({ answers }) => {
           by {answers[answer].answerer_name},
         </span>
         <span>
-          {answers[answer].date}
+          <Moment format="DD/MM/YYYY">{answers[answer].date}</Moment>
         </span>
         <div>
           <Pictures pictures={answers.[answer].photos}/>

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const QAListSlice = createSlice({
   name: 'QAList',
-  initialState: {},
+  initialState: [],
   reducers: {
     upDateList(state, action){
       const fullList = action.payload;

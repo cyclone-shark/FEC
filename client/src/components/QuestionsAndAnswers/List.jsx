@@ -1,15 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Helpful from "./Helpful";
 import Answers from './Answers';
 import AddAnswer from './AddAnswer';
 import ShowQuestions from './ShowQuestions'
+import { useSelector, useDispatch } from "react-redux";
 
-
-
-const List = ({ questions }) => {
+const List = ({ questions, setListData, id }) => {
 
   //<Helpfulness helpful={question.question_helpfulness}/>
-
 
   const renderedList = questions
   .sort((a,b) => b.question_helpfulness - a.question_helpfulness)
@@ -21,7 +19,7 @@ const List = ({ questions }) => {
             Q: {question.question_body}
           </span>
           <span>
-            {question.question_helpfulness} |
+             <Helpful helpful={question.question_helpfulness}/>
           </span>
           <span> Yes </span>
           <span>
@@ -33,6 +31,10 @@ const List = ({ questions }) => {
           </div>
       </div>
     )});
+
+  useEffect(() => {
+    setListData(renderedList)
+  }, [id])
 
   return (<div>
      <ShowQuestions renderedList={renderedList}/>
