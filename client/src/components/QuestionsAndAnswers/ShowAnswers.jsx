@@ -25,14 +25,21 @@ const ShowAnswers = ({renderedAnswers}) => {
     }
   },[renderedAnswers])
 
-
+  const btnStyle = {
+    'font-size': '12px',
+    'font-weight': 'bold',
+    'background-color': 'rgba(95, 63, 191, 0.15)',
+    'border': 'none',
+    'margin-bottom': '3%',
+    'color': 'rgb(75, 75, 75)'
+  }
   return (
     <div>
       <div>
           <div>
             <div> {answers} </div>
             {show ?
-            <button onClick={handleClick}> LOAD MORE ANSWERS </button>
+            <button style={btnStyle} onClick={handleClick}> LOAD MORE ANSWERS </button>
             : null }
           </div>
 

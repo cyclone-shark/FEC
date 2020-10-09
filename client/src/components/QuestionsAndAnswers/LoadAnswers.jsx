@@ -6,9 +6,6 @@ import Pictures from './Pictures';
 
 
 const LoadAnswers = () => {
-
-
-
   return (
     <div> Load Answers </div>
   )

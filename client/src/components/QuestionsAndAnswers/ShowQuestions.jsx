@@ -32,6 +32,16 @@ const ShowQuestions = ({ renderedList}) => {
     }
   }, [renderedList])
 
+
+  const btnStyle = {
+    'font-size': '16px',
+    'font-weight': 'bold',
+    'background-color': 'rgba(95, 63, 191, 0.15)',
+    'border': 'none',
+    'margin-bottom': '3%',
+    'color': 'rgb(75, 75, 75)'
+  }
+
   return (
     <div>
       <div>
@@ -39,7 +49,7 @@ const ShowQuestions = ({ renderedList}) => {
           <div>
             <div> {longerList} </div>
             {toggle ?
-            <button onClick={handleClick}> MORE ANSWERED QUESTIONS</button>
+            <button style={btnStyle} onClick={handleClick}> MORE ANSWERED QUESTIONS</button>
             : null }
           </div>
 

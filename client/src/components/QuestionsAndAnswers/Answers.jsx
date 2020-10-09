@@ -8,10 +8,17 @@ import 'moment-timezone';
 
 const Answers = ({ answers }) => {
 
+  const answerStyle= {
+    'font-size': 'Large',
+    'color': 'black',
+    'padding-top': '5px',
+    'padding-bottom': '5px'
+  }
+
   const renderedAnswers = Object.keys(answers).map((answer)=> {
     return (
       <div>
-        <div>
+        <div style={answerStyle}>
           A: {answers[answer].body}
         </div>
         <span>

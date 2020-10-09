@@ -89,11 +89,25 @@ export default function AddQuestion({ setQuestions }) {
   const handleClose = () => {
     setOpen(false);
   };
+  const inputStyle = {
+    width: '100%',
+    height: '50%',
+    padding: "10px"
+  }
+
+
+  const btnStyle = {
+    'font-size': '16px',
+    'font-weight': 'bold',
+    'background-color': 'rgba(95, 63, 191, 0.15)',
+    'border': 'none',
+    'color': 'rgb(75, 75, 75)'
+  }
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        Ask Your Question
+      <button style={btnStyle} type="button" onClick={handleOpen}>
+        ASK YOUR QUESTION
       </button>
       <Modal
         open={open}
@@ -103,21 +117,21 @@ export default function AddQuestion({ setQuestions }) {
       >
         <div style={modalStyle} className={classes.paper}>
           <form  action="script.cgi" method="post" >
-            <input
+            <input style={inputStyle}
               onChange={(e) => setName(e.target.value)}
               type="text"
               placeholder="Enter your name"
               name="name"
             />
             <br />
-            <input
+            <input style={inputStyle}
               onChange={(e) => setEmail(e.target.value)}
               type="text"
               placeholder="Enter your email"
               name="email"
             />
             <br />
-            <input
+            <input style={inputStyle}
               onChange={(e) => setBody(e.target.value)}
               type="text"
               placeholder="Enter your question"

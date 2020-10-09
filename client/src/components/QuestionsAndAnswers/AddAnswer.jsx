@@ -23,7 +23,7 @@ function getModalStyle() {
 const useStyle = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
       width: "25ch",
     },
   },
@@ -34,9 +34,9 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: 800,
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    border: "1px solid #000",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: theme.spacing(6, 2, 4, 3),
   },
 }));
 
@@ -87,13 +87,21 @@ export default function AddAnswer({ setQuestions }) {
     width: '100%',
     height: '50%',
     padding: "10px"
-
+  }
+  const btnStyle = {
+    '-webkit-appearance': 'unset',
+    'border': 'none',
+    'padding-right': '2px',
+    'padding-left': '0px',
+    'text-decoration': 'underline',
+    'background-color': 'rgba(28, 43, 40, 0.12)',
+    'color': 'rgb(75, 75, 75)'
   }
 
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
+      <button style={btnStyle} type="button" onClick={handleOpen}>
         Add Answer
       </button>
       <Modal
