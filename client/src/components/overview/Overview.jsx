@@ -15,19 +15,26 @@ var Overview = () => {
   };
 
   var maximize = () => {
-    $('.overview').animate({
-      height: '90%',
-      maxWidth: '90%',
+    $('.main-view').animate({
+      height: '90vh',
+      maxWidth: '90vw',
+      marginLeft: 'auto',
+      marginRight: 'auto',
     });
-    $('.overview').css({
-      cursor: 'crosshair',
+    $('.picture').css({
+      zIndex: 1,
+      cursor: 'zoom-out',
     });
     setToggle(!toggle);
   };
 
   var minimize = () => {
-    $('.overview').animate({ height: '60%', maxWidth: '60%' });
-    $('.overview').css({
+    $('.main-view').animate({
+      height: '60vh',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    });
+    $('.picture').css({
       cursor: 'zoom-in',
     });
     setToggle(!toggle);
@@ -35,19 +42,9 @@ var Overview = () => {
   return (
     <div
       className='overview'
-      // onMouseMove={(e) => {
-      //   // $('.temp').css({ left: e.pageX, top: e.pageY });
-      //   if (e.target.className === 'picture') {
-      //     if (toggle) {
-      //       // $('.temp').css({
-      //       //   visibility: 'visible',
-      //       // });
-      //       $('.temp').animate({ left: e.pageX, top: e.pageY });
-      //     }
-      //   } else {
-      //     // $('.temp').css({ visibility: 'hidden' });
-      //   }
-      // }}
+      onClick={(e) =>
+        console.log('overview', e.target, new Date(new Date().getTime()))
+      }
     >
       <MainView
         toggle={toggle}

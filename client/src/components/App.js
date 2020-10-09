@@ -33,7 +33,7 @@ class App extends React.Component {
       .then((meta) => {
         store.dispatch(changeReviewMetadata(meta));
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   }
 
   render() {
@@ -42,7 +42,7 @@ class App extends React.Component {
       <>
         <ChangeProduct />
         <OverView />
-        <span className="ratings-container">
+        <span className='ratings-container'>
           <Rating />
         </span>
         <QAndA />

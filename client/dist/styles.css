@@ -1,41 +1,64 @@
 .overview {
-  border-style: solid;
-  height: 60%;
-  max-width: 60%;
   display: grid;
-  grid-template-areas:
-    'carousel left picture right maximize '
-    'carousel left picture right stars '
-    'carousel left picture right category '
-    'carousel left picture right product '
-    'carousel left picture right price  '
-    'carousel left picture right style-info  '
-    'carousel left picture right style-list  '
-    'carousel left picture right size  '
-    'carousel left picture right cart  ';
+  margin-left: auto;
+  margin-right: auto;
+  /* border-style: solid; */
+  height: 60vh;
+  position: relative;
+  grid-template-areas: 'main-view side-view';
 }
 .cart {
   grid-area: cart;
 }
-.category {
+.main-view {
   display: grid;
+  grid-area: main-view;
+  grid-template-areas: 'carousel left picture right ';
+  position: relative;
+  margin-left: auto;
+  height: 60vh;
+  /* border-style: solid; */
+}
+.side-view {
+  display: grid;
+  grid-area: side-view;
+  grid-template-areas:
+    'stars'
+    'category'
+    'product'
+    'price'
+    'style-info'
+    'style-list'
+    'size'
+    'cart';
+  position: relative;
+  margin-left: 5vw;
+  margin-right: auto;
+  height: 60vh;
+  /* border-style: solid; */
+}
+.category {
   grid-area: category;
 
   position: relative;
 }
 .product-name {
-  grid-area: product;
   position: relative;
+  grid-area: product;
 }
 .left {
   grid-area: left;
+  position: relative;
   height: 100%;
 }
 .right {
   grid-area: right;
+  position: relative;
   height: 100%;
 }
 .maximize {
+  height: 20%;
+  position: relative;
   grid-area: maximize;
 }
 .price {
@@ -47,31 +70,33 @@
 .size {
   grid-area: size;
 }
-.max-picture {
-  grid-area: left;
-  position: relative;
-  overflow-y: scroll;
-}
 .picture {
-  margin-left: auto;
-  margin-right: auto;
   grid-area: picture;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
   cursor: zoom-in;
-  display: flex;
+  max-width: 100vw;
   height: 100%;
 }
 .carousel {
   display: grid;
-  grid-template-columns: 1fr;
+  margin-left: auto;
+  margin-right: auto;
   grid-area: carousel;
+  grid-template-columns: 1fr;
+  width: 10vw;
+  height: 100%;
+}
+.stars {
+  grid-area: stars;
 }
 .carousel-entry {
-  height: 7vh;
   position: relative;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  height: 100%;
 }
 
 .style-entry {

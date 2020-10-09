@@ -7,9 +7,8 @@ const Price = (props) => {
   const styleData = useSelector((state) => state.styleData);
   const style = useSelector((state) => state.productStyle);
   const dispatch = useDispatch();
-
+  const salePrice = useSelector((state) => state.salePrice);
   useEffect(() => {
-    console.log(styleData.original_price);
     if (styleData.original_price) {
       dispatch(changeSalePrice(styleData.sale_price));
       dispatch(changeCurrentPrice(styleData.original_price));
@@ -18,7 +17,14 @@ const Price = (props) => {
 
   return (
     <React.Fragment>
-      <div className='price'>${price}</div>
+      {salePrice === '0' ? (
+        <div className='price'>${price}</div>
+      ) : (
+        <div className='price'>
+          <div style={{ color: 'red' }}>${salePrice}</div>
+          <s>${price}</s>
+        </div>
+      )}
     </React.Fragment>
   );
 };
