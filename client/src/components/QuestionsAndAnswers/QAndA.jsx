@@ -19,6 +19,7 @@ const QAndA = () => {
   const [items, setItems] = useState([])
 
 
+
   const id = useSelector((state) => state.productId);
 
   useEffect(() => {
@@ -39,18 +40,18 @@ const QAndA = () => {
     getAnsweredQuestion(id);
   }, [id]);
 
-
-
+  const qaStyle = {
+    'padding-top': '5px',
+    'padding-bottom': '40px',
+    'padding-left': '40px'
+  }
 
   return (
-    <React.Fragment>
-      <div><h2>Questions and Answers </h2></div>
-      {/* <SearchBar data={questions} setItems={setItems} id={id}/> */}
+    <div style={qaStyle}>
+      <h2 > Questions and Answers </h2>
       <List questions={questions} setListData={setListData} id={id}/>
-      <AddQuestion setQuestions={setQuestions}/>
-      <Modal questions={questions} />
-    </React.Fragment>
-  );
+    </div>
+  )
 };
 
 export default QAndA;

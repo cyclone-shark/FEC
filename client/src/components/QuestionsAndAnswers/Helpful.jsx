@@ -15,10 +15,21 @@ const Helpful = ({ helpful }) => {
         .then(() => setCounter(counter + 1)).catch(err => console.log(err))
     }
   };
+
+
+  const btnStyle = {
+    'font-size': '12px',
+    'font-weight': 'bold',
+    'background-color': 'rgba(95, 63, 191, 0.15)',
+    'border': 'none',
+    'margin-bottom': '3%',
+    'color': 'rgb(75, 75, 75)'
+  }
+
   return (
     <div>
       <span> Helpful? </span>
-      <span><button onClick={onClick}> Yes </button></span>
+      <span><button style={btnStyle} onClick={onClick}> Yes </button></span>
       <span>{counter}</span>
     </div>
   )
