@@ -67,7 +67,7 @@ export const Rating = () => {
                 </RatingStyle>
                 <RatingBars/>
             </div>
-            <div className="w3-col" width={{width: "50%"}}>
+            <div className="w3-cell" width={{width: "90%"}}>
               <ReviewList/>
             </div>
           </div>

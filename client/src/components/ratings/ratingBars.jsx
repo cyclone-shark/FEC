@@ -38,7 +38,7 @@ const RatingBars = () => {
               <>
                 {ratings[value]
                   ? <div className="w3-bar-item">
-                      {value} Stars<RatingsProgressBar percentage={(ratings[value]/ratingTotal) * 100}/><br/>
+                      <a>{value}  Stars</a><RatingsProgressBar percentage={(ratings[value]/ratingTotal) * 100}/><br/>
                     </div>
                   : null
                 }

@@ -19,26 +19,9 @@ const ReviewList = () => {
   var [tempReviews, changeReviews] = useState(reviews);
   var [tempReviewsCount, changeReviewCount] = useState(reviews.count);
 
-  ///handle two at a time
-  const [toggle, setToggle] = useState(false);
-  const [longerList, setLongerList] = useState([]);
-  const [listLength, setListLength] = useState(0);
-  const [count, setCount] = useState(2);
-  
-
-  //used to handle 2 + answers
-  const handleClick = () => {
-    if (reviewsCount > 2) {
-      setCount(count + 2);
-      var temp = reviews.slice(0, count);
-      setLongerList(temp);
-      setToggle(true);
-    }
-  };
-  
   useEffect(() => {
     //ran once and only once
-    getReviewsForProduct(1)
+    getReviewsForProduct(4)
       .then((data) => { 
         //***TODO - MODULARIZE THE SORT CODE INTO A SEPERATE FUNCTION
         //CHANGE THIS SO THAT THE REDUCERS DO THE FILTER AND SEARCH*/
@@ -50,35 +33,24 @@ const ReviewList = () => {
           }
         });
         store.dispatch(changeReviewData(data));
+        changeReviews(data);
         changeReviewCount(data.length);
       })
       .catch(error => console.log(error));
   }, []);
 
   function updateReviews() {
-    getReviewsForProduct(productId)
+    getReviewsForProduct(4)
       .then((reviewData) => {
         changeReviews(reviewData);//this updates tempReview which we use to manipulate sort order
+        changeReviewCount(reviewData.length);
       })
       .catch(err => console.error(err));
   }
   
-  useEffect (() => {
-    setLongerList(reviews.slice(0, 2))
-    setListLength(reviews.length)
-
-    //some safety checks
-    console.log(listLength)
-    console.log('reviews->', reviews)
-
-    if (reviewsCount.length > 2) {
-      setToggle(true)
-    }
-  }, [reviewsCount]);
-
   useEffect(() => {
     updateReviews();
-    console.log('IN USE EFFECT');
+
     var sortedReviews = tempReviews.slice();
    
     if (sortOrder === 'relevance') {
@@ -101,10 +73,10 @@ const ReviewList = () => {
         return b.helpfulness - a.helpfulness;
       })
     }
-    changeReviewCount(sortedReviews.length);
-    store.dispatch(changeReviewData(sortedReviews));
     
+    store.dispatch(changeReviewData(sortedReviews));
     changeReviews(sortedReviews);
+    changeReviewCount(sortedReviews.length);
   }
   , [sortOrder]); //change on sort order change
     
@@ -117,7 +89,7 @@ const ReviewList = () => {
     return (
       <div className="w3-container w3-bar-block">
         <div className="w3-container w3-bar-item">
-          <b> {tempReviewsCount===1 ? `${tempReviewsCount} review` :  `${tempReviewsCount} reviews` } , sorted by </b>
+          <b> {tempReviewsCount===1 ? `${tempReviewsCount} review` : `${tempReviewsCount} reviews` } , sorted by </b>
           <select className="w3-select w3-cell"
             style={{float: 'right'}}
             name='options'
@@ -129,16 +101,14 @@ const ReviewList = () => {
           </select>
          </div> 
          <ul className="w3-ul w3-bar-item">
-              {reviews
-                ? reviews.map((review) => {
-                    return <li><ReviewListEntry review={review} key={review.review_id}/></li>;
+              {tempReviews
+                ? tempReviews.map((review) => {
+                    return <ol><ReviewListEntry review={review} key={review.review_id}/></ol>;
                   })     
                 : null}
           </ul>
         <center className="w3-container w3-bar-item">
-        {toggle ?
-            <button className="w3-button w3-white w3-border w3-round-xlarge" onClick={handleClick}>MORE REVIEWS</button>
-            : null }
+          <button className="w3-button w3-white w3-border w3-round-xlarge">MORE REVIEWS</button>
           <button className="w3-button w3-white w3-border w3-round-xlarge">ADD A REVIEW +</button>
         </center>
       </div>

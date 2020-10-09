@@ -7,8 +7,10 @@ import {getReviewMetadataForProduct} from '../../../../helpers/apiHelpers'
 const ReviewListEntry = ({review}) =>  {
 var productId = useSelector((state) => state.productId);
 var [avgRating, changeAvgRating] = useState(0);
-var rating = review.rating;
-console.log(rating)
+var [rating, setRating] = useState(review.rating);
+var [review, setReview]  = useState(review);
+console.log('rating --->', rating);
+console.log(rating);
 const getAverageRating = () => {
   getReviewMetadataForProduct(productId).then((meta) => {
     // const len = reviews.length;
@@ -56,12 +58,20 @@ const RatingStyle = styled.div`
   overflow: hidden;
 }`;
 return (
-  <div className="w3-display-container" id="starOuterContainer"style={{height: "100px", width: "100%"}}>
-    <span className="w3-display-topleft">
-        <RatingStyle>
-          <div className="star-ratings-css"></div>
-        </RatingStyle>
-    </span>
+  <div className="w3-display-container" style={{height: "100px", width: "50%"}}>
+    <div className="w3-display-topleft">
+      <RatingStyle>
+            <div className="star-ratings"></div>
+      </RatingStyle>
+    </div>
+    <br/>
+    <div className="w3-display-topright">
+      {`
+      DATE:${review.date}
+      HELPFULLNESS: ${review.helpfulness}
+      RECOMMEND: ${review.recommend}`}
+    </div>
+
   </div>
   );
 }
