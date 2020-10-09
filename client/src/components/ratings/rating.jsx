@@ -4,7 +4,8 @@ import { getReviewMetadataForProduct } from '../../../../helpers/apiHelpers';
 import './styles.css';
 import styled from 'styled-components';
 import RatingBars from './ratingBars';
-import ReviewList  from './reviewList'
+import ReviewList from './reviewList';
+import axios from 'axios';
 
 export const Rating = () => {
   var productId = useSelector((state) => state.productId);
@@ -29,50 +30,79 @@ export const Rating = () => {
   useEffect(() => {
     getAverageRating();
   }, [productId]);
-  
-    const RatingStyle = styled.div`
-      .star-ratings-css {
-        unicode-bidi: bidi-override;
-        color: #c5c5c5;
-        font-size: 25px;
-        height: 25px;
-        width: 125px;
-        margin: 0 auto;
-        position: relative;
-        text-shadow: 0 1px 0 #a2a2a2;
-      }
-      .star-ratings-css::before {
-        content: '★★★★★';
-        opacity: .3;
-      }
-      .star-ratings-css::after {
-        color: gold;
-        content: '★★★★★';
-        text-shadow: 0 1px 0 gold;
-        position: absolute;
-        z-index: 1;
-        display: block;
-        left: 0;
-        top: 0;
-        width: ${(avgRating/5.0) * 100}%;
-        overflow: auto;
-      }`;
-    return (
-        <div className="w3-container" style={{width: "100%"}}><h1>Ratings and Reviews</h1>
-          <div className="w3-container m3-row">
-            <div className="w3-cell" width={{width: "30%"}}>
-                <RatingStyle>
-                  <center><div className="star-ratings-css"></div></center>
-                  <center><h1><div className="m3-cell">{avgRating}</div></h1></center>
-                </RatingStyle>
-                <RatingBars/>
-            </div>
-            <div className="w3-cell" width={{width: "90%"}}>
-              <ReviewList/>
-            </div>
-          </div>
+
+  const RatingStyle = styled.div`
+    .star-ratings-css {
+      unicode-bidi: bidi-override;
+      color: #c5c5c5;
+      font-size: 25px;
+      height: 25px;
+      width: 125px;
+      margin: 0 auto;
+      position: relative;
+      text-shadow: 0 1px 0 #a2a2a2;
+    }
+    .star-ratings-css::before {
+      content: '★★★★★';
+      opacity: 0.3;
+    }
+    .star-ratings-css::after {
+      color: gold;
+      content: '★★★★★';
+      text-shadow: 0 1px 0 gold;
+      position: absolute;
+      z-index: 1;
+      display: block;
+      left: 0;
+      top: 0;
+      width: ${(avgRating / 5.0) * 100}%;
+      overflow: auto;
+    }
+  `;
+
+  var interactionHandler = (e) => {
+    var element = String(e.target);
+    var widget = 'ratings';
+    var time = String(new Date(new Date().getTime()));
+
+    axios
+      .post(`http://18.224.37.110/interactions`, {
+        element,
+        widget,
+        time,
+      })
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
+  return (
+    <div
+      className='w3-container'
+      style={{ width: '100%' }}
+      onClick={(e) => {
+        interactionHandler(e);
+      }}
+    >
+      <h1>Ratings and Reviews</h1>
+      <div className='w3-container m3-row'>
+        <div className='w3-cell' width={{ width: '30%' }}>
+          <RatingStyle>
+            <center>
+              <div className='star-ratings-css'></div>
+            </center>
+            <center>
+              <h1>
+                <div className='m3-cell'>{avgRating}</div>
+              </h1>
+            </center>
+          </RatingStyle>
+          <RatingBars />
         </div>
-    );
-  }
+        <div className='w3-cell' width={{ width: '90%' }}>
+          <ReviewList />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Rating;
