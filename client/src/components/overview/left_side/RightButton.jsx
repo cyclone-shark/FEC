@@ -21,7 +21,11 @@ var RightButton = (props) => {
     dispatch(changePhotoIndex(index));
   };
 
-  return <button onClick={() => clickHandler()}>RIGHT</button>;
+  return (
+    <button className='right' onClick={() => clickHandler()}>
+      &#8594;
+    </button>
+  );
 };
 
 export default RightButton;

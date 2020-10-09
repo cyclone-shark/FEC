@@ -1,38 +1,117 @@
 .overview {
   display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  /* border-style: solid; */
+  height: 60vh;
+  position: relative;
+  grid-template-areas: 'main-view side-view';
+}
+.cart {
+  grid-area: cart;
+}
+.main-view {
+  display: grid;
+  grid-area: main-view;
+  grid-template-areas: 'carousel left picture right ';
+  position: relative;
+  margin-left: auto;
+  height: 60vh;
+  /* border-style: solid; */
+}
+.side-view {
+  display: grid;
+  grid-area: side-view;
   grid-template-areas:
-    'c a a b b'
-    'c a a b b'
-    'e e e e e'
-    'd d d d d';
+    'stars'
+    'category'
+    'product'
+    'price'
+    'style-info'
+    'style-list'
+    'size'
+    'cart';
+  position: relative;
+  margin-left: 5vw;
+  margin-right: auto;
+  height: 60vh;
+  /* border-style: solid; */
 }
-.d {
-  grid-area: d;
+.category {
+  grid-area: category;
+
+  position: relative;
 }
-.a {
-  grid-area: a;
+.product-name {
+  position: relative;
+  grid-area: product;
 }
-.b {
-  grid-area: b;
+.left {
+  grid-area: left;
+  position: relative;
+  height: 100%;
 }
-.c {
-  grid-area: c;
-  max-height: 60vh;
+.right {
+  grid-area: right;
+  position: relative;
+  height: 100%;
+}
+.maximize {
+  height: 20%;
+  position: relative;
+  grid-area: maximize;
+}
+.price {
+  grid-area: price;
+}
+.style-info {
+  grid-area: style-info;
+}
+.size {
+  grid-area: size;
 }
 .picture {
-  max-width: 100%;
-  max-height: 700px;
+  grid-area: picture;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: zoom-in;
+  max-width: 100vw;
+  height: 100%;
 }
 .carousel {
-  max-height: 100px;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  grid-area: carousel;
+  grid-template-columns: 1fr;
+  width: 10vw;
+  height: 100%;
 }
+.stars {
+  grid-area: stars;
+}
+.carousel-entry {
+  position: relative;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+}
+
 .style-entry {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 3vw;
+  height: 5vh;
+  position: relative;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .style-list {
-  grid-area: b;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-area: style-list;
 }
 .filler {
   background: #6ff21d;

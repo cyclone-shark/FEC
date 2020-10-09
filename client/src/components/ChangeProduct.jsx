@@ -6,7 +6,8 @@ import { getReviewMetadataForProduct } from '../../../helpers/apiHelpers.js';
 import { getProductData } from '../../../helpers/productHelpers.js';
 import { changeProductData } from '../reducers/productData.js';
 import { changeReviewData } from '../reducers/reviewData.js';
-import { changeReviewMetadata } from '../reducers/reviewMetadata'
+import { changeReviewMetadata } from '../reducers/reviewMetadata';
+import { changeCarouselIndex } from '../reducers/carouselIndex';
 var ChangeProduct = () => {
   var [id, setId] = useState('');
   var dispatch = useDispatch();
@@ -16,6 +17,8 @@ var ChangeProduct = () => {
     getProductData(id)
       .then((data) => {
         //console.log(data);
+
+        dispatch(changeCarouselIndex(0));
         dispatch(changeProductData(data));
       })
       .catch((err) => console.error(err));
@@ -28,7 +31,7 @@ var ChangeProduct = () => {
       .then((data) => {
         dispatch(changeReviewMetadata(data));
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   };
 
   var updateId = (value) => {

@@ -6,9 +6,9 @@ const ProductName = (props) => {
 
   return (
     <React.Fragment>
-      <div>{category}</div>
+      <div className='category'>{category}</div>
       <br></br>
-      <div>{productName}</div>
+      <div className='product-name'>{productName}</div>
     </React.Fragment>
   );
 };

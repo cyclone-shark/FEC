@@ -35,7 +35,7 @@ class App extends React.Component {
       .then((meta) => {
         store.dispatch(changeReviewMetadata(meta));
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   }
 
   render() {
@@ -44,6 +44,9 @@ class App extends React.Component {
         {/* <_5Stars percentage={33}/> */}
         <ChangeProduct />
         <OverView />
+        <span className='ratings-container'>
+          <Rating />
+        </span>
         <QAndA />
         <div className="d">
           <Rating />

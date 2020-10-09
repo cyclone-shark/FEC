@@ -23,7 +23,7 @@ function getModalStyle() {
 const useStyle = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
       width: "25ch",
     },
   },
@@ -34,48 +34,19 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: 800,
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    border: "1px solid #000",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: theme.spacing(6, 2, 4, 3),
   },
 }));
 
 //-------------------------------------------------------------
 
-export default function AddQuestion({ setQuestions }) {
-
+export default function AddAnswer({ setQuestions }) {
   const id = useSelector((state) => state.productId);
-
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
-  const checkform = () => {
-    if (name === '') {
-      alert("please enter you name");
-      return false;
-    } else if (email === '') {
-      alert("required");
-      return false;
-    } else if (body === '') {
-      alert("Please write a question");
-      return false;
-    }
-    handleSubmit();
-  }
-
-  const handleSubmit = () => {
-    axios
-      .post("http://18.224.37.110/qa/questions", {
-        body: body,
-        name: name,
-        email: email,
-        product_id: id,
-      })
-      .then(() => alert('Submitted!'))
-      .catch((err) => console.log(err));
-
-  };
 
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -89,25 +60,49 @@ export default function AddQuestion({ setQuestions }) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const checkform = () => {
+    if (name === '') {
+      alert("You must enter the following:");
+      return false;
+    } else if (email === '') {
+      alert("You must enter the following:");
+      return false;
+    } else if (body === '') {
+      alert("You must enter the following:");
+      return false;
+    }
+    onHandleSubmit();
+  }
+
+  const onHandleSubmit = () => {
+    axios.post(`http://18.224.37.110/qa/questions/${id}/answers`, {
+      body: body,
+      name: name,
+      email: email
+    }).then(() => alert('Answer Submitted!')).catch(err => console.log(err))
+  }
+
   const inputStyle = {
     width: '100%',
     height: '50%',
     padding: "10px"
   }
-
-
   const btnStyle = {
-    'font-size': '16px',
-    'font-weight': 'bold',
-    'background-color': 'rgba(95, 63, 191, 0.15)',
+    '-webkit-appearance': 'unset',
     'border': 'none',
+    'padding-right': '2px',
+    'padding-left': '0px',
+    'text-decoration': 'underline',
+    'background-color': 'rgba(28, 43, 40, 0.12)',
     'color': 'rgb(75, 75, 75)'
   }
+
 
   return (
     <div>
       <button style={btnStyle} type="button" onClick={handleOpen}>
-        ASK YOUR QUESTION
+        Add Answer
       </button>
       <Modal
         open={open}
@@ -120,21 +115,21 @@ export default function AddQuestion({ setQuestions }) {
             <input style={inputStyle}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              placeholder="Enter your name"
+              placeholder="Your name..."
               name="name"
             />
             <br />
             <input style={inputStyle}
               onChange={(e) => setEmail(e.target.value)}
               type="text"
-              placeholder="Enter your email"
+              placeholder="Your email..."
               name="email"
             />
             <br />
             <input style={inputStyle}
               onChange={(e) => setBody(e.target.value)}
               type="text"
-              placeholder="Enter your question"
+              placeholder="Your answer..."
               name="body"
             />
           </form>
@@ -147,3 +142,4 @@ export default function AddQuestion({ setQuestions }) {
     </div>
   );
 }
+

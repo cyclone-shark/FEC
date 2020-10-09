@@ -26,21 +26,19 @@ const getProductStyles = (id) => {
 };
 //List Reviews
 const getReviewsForProduct = (productId) => {
-  return (
-    axios.get(`http://18.224.37.110/reviews?product_id=${productId}&count=10000`)
-      .then(({data}) => data.results)
-      .catch(err => console.error(err))
-  );
+  return axios
+    .get(`http://18.224.37.110/reviews?product_id=${productId}&count=10000`)
+    .then(({ data }) => data.results)
+    .catch((err) => console.error(err));
 };
 //Get Review Metadata
 const getReviewMetadataForProduct = (productId) => {
-  return (
-    axios.get(`http://18.224.37.110/reviews/meta?product_id=${productId}`)
-      .then(({data}) => data)
-      .catch((err) => console.error(err))
-  )
+  return axios
+    .get(`http://18.224.37.110/reviews/meta?product_id=${productId}`)
+    .then(({ data }) => data)
+    .catch((err) => console.error(err));
 };
-/* Add a Review for a Product 
+/* Add a Review for a Product
 This API call takes Body Parameters:
 
 | Parameter       | Type   | Description                                                  |
@@ -62,23 +60,31 @@ const addReview = (reviewObj) => {
 const markReviewHelpful = (reviewId) => {
   return axios.put(`http://18.224.37.110/reviews/${reviewId}/helpful`);
 };
-//Updates a review to show it was reported. 
-const reportReview = (reviewId) =>  {
+//Updates a review to show it was reported.
+const reportReview = (reviewId) => {
   return axios.put(`http://18.224.37.110/reviews/${reviewId}/report`);
 };
 
+const logInteraction = (element, widget, time) => {
+  return axios.post(`http://18.224.37.110/interactions`, {
+    element,
+    widget,
+    time,
+  });
+};
 
 // const getRelatedProducts = (id) => {
 //   axios.get(`http://18.224.37.110/products/${id}/related`)
 // }
 
-export { 
-  getAllProducts, 
-  getProduct, 
+export {
+  getAllProducts,
+  getProduct,
   getProductStyles,
   getReviewMetadataForProduct,
   getReviewsForProduct,
   addReview,
   markReviewHelpful,
-  reportReview
- };
+  reportReview,
+  logInteraction,
+};

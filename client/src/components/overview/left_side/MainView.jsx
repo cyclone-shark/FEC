@@ -3,29 +3,40 @@ import { useSelector } from 'react-redux';
 import Carousel from './Carousel';
 import LeftButton from './LeftButton';
 import RightButton from './RightButton';
-var MainView = () => {
+import Modal from '@material-ui/core/Modal';
+import $ from 'jquery';
+import { makeStyles } from '@material-ui/core/styles';
+var MainView = (props) => {
   var styleData = useSelector((state) => state.styleData);
   var index = useSelector((state) => state.photoIndex);
   var [image, setImage] = useState();
 
   useEffect(() => {
-    if (styleData.photos) setImage(styleData.photos[index].url); //mainImage = styleData.photos[index];
+    if (styleData.photos) setImage(styleData.photos[index].url);
   }, [index]);
+
   useEffect(() => {
-    if (styleData.photos) setImage(styleData.photos[index].url); //mainImage = styleData.photos[index];
+    if (styleData.photos) setImage(styleData.photos[index].url);
   }, [styleData]);
 
   return (
-    <React.Fragment>
+    <div className='main-view'>
+      <Carousel />
       <LeftButton />
-      <div className='a'>
-        <img className='picture' src={image}></img>
-      </div>
+
+      <img
+        className='picture'
+        src={image}
+        onClick={() => {
+          props.clickHandler();
+        }}
+      ></img>
+
+      {/* <button className='maximize' onClick={() => props.clickHandler()}>
+        maximize
+      </button> */}
       <RightButton />
-      <div className='c'>
-        <Carousel />
-      </div>
-    </React.Fragment>
+    </div>
   );
 };
 
