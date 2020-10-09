@@ -62,15 +62,14 @@ export default function AddAnswer({ setQuestions }) {
   };
 
   const checkform = () => {
-    console.log('hello')
     if (name === '') {
-      alert("please enter you name");
+      alert("You must enter the following:");
       return false;
     } else if (email === '') {
-      alert("required");
+      alert("You must enter the following:");
       return false;
     } else if (body === '') {
-      alert("Please write a question");
+      alert("You must enter the following:");
       return false;
     }
     onHandleSubmit();
@@ -84,6 +83,12 @@ export default function AddAnswer({ setQuestions }) {
     }).then(() => alert('Answer Submitted!')).catch(err => console.log(err))
   }
 
+  const inputStyle = {
+    width: '100%',
+    height: '50%',
+    padding: "10px"
+
+  }
 
 
   return (
@@ -99,24 +104,24 @@ export default function AddAnswer({ setQuestions }) {
       >
         <div style={modalStyle} className={classes.paper}>
           <form  action="script.cgi" method="post" >
-            <input
+            <input style={inputStyle}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              placeholder="Enter your name"
+              placeholder="Your name..."
               name="name"
             />
             <br />
-            <input
+            <input style={inputStyle}
               onChange={(e) => setEmail(e.target.value)}
               type="text"
-              placeholder="Enter your email"
+              placeholder="Your email..."
               name="email"
             />
             <br />
-            <input
+            <input style={inputStyle}
               onChange={(e) => setBody(e.target.value)}
               type="text"
-              placeholder="Enter your answer"
+              placeholder="Your answer..."
               name="body"
             />
           </form>
