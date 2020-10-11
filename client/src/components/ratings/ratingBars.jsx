@@ -3,10 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import RatingsProgressBar from './ratingsProgessBar';
 import {getReviewMetadataForProduct} from '../../../../helpers/apiHelpers';
 import store from '../../store.js';
-import { changeReviewData } from '../../reducers/reviewMetaData';
 import { changeReviewMetadata } from '../../reducers/reviewMetadata'
 
-import _ from 'lodash';
 
 const RatingBars = () => {
 
@@ -31,7 +29,7 @@ const RatingBars = () => {
   },[productId]);//ran when productId changes
 
   return (
-    <div className="w3-bar-block"  style={{width: "50%"}}>
+    <React.Fragment>
       {ratings
         ? [1,2,3,4,5].map((value) => {
             return (
@@ -46,7 +44,7 @@ const RatingBars = () => {
             )
           })
         : null}
-    </div>
+    </React.Fragment>
   );
 }
 

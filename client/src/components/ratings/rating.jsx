@@ -58,20 +58,26 @@ export const Rating = () => {
         overflow: auto;
       }`;
     return (
-        <div className="w3-container" style={{width: "100%"}}><h1>Ratings and Reviews</h1>
+      <React.Fragment>
+        <div className="w3-container">
+          <h1>Ratings and Reviews</h1>
           <div className="w3-container m3-row">
-            <div className="w3-cell" width={{width: "30%"}}>
+          <div className="w3-col" style={{width: "20%"}}/>
+            <div className="w3-cell">
                 <RatingStyle>
                   <center><div className="star-ratings-css"></div></center>
                   <center><h1><div className="m3-cell">{avgRating}</div></h1></center>
                 </RatingStyle>
-                <RatingBars/>
+                <div>
+                  <RatingBars/>
+                </div>
             </div>
-            <div className="w3-cell" width={{width: "90%"}}>
+            <div className="w3-col" width={{width: "40%", height: "200px"}}>
               <ReviewList/>
             </div>
           </div>
         </div>
+      </React.Fragment>
     );
   }
 

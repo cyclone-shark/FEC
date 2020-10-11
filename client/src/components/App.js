@@ -10,6 +10,7 @@ import { changeReviewData } from '../reducers/reviewData.js';
 import { changeReviewMetadata } from '../reducers/reviewMetadata';
 import { getProductData } from '../../../helpers/productHelpers.js';
 import ReviewList from './ratings/reviewList.jsx';
+import RatingBars from './ratings/ratingBars.jsx';
 import Rating from './ratings/rating.jsx';
 import RatingBreakdownBars from './ratings/ratingBars.jsx';
 import { getReviewsForProduct } from '../../../helpers/apiHelpers.js';
@@ -41,7 +42,6 @@ class App extends React.Component {
   render() {
     return (
       <>
-        {/* <_5Stars percentage={33}/> */}
         <ChangeProduct />
         <OverView />
         <QAndA />

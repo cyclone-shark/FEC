@@ -1,16 +1,18 @@
 import axios from 'axios';
 import { get } from 'lodash';
 
+const server = 'http://3.137.191.193';
+
 const getAllProducts = () => {
   return axios
-    .get('http://18.224.37.110/products')
+    .get(`${server}/products`)
     .then((data) => data)
     .catch((err) => console.error(err));
 };
 
 const getProduct = (id) => {
   return axios
-    .get(`http://18.224.37.110/products/${id}`)
+    .get(`${server}/products/${id}`)
     .then((data) => data.data)
     .catch((err) => console.error(err));
 };
@@ -18,7 +20,7 @@ const getProduct = (id) => {
 const getProductStyles = (id) => {
   return (
     axios
-      .get(`http://18.224.37.110/products/${id}/styles`)
+      .get(`${server}/products/${id}/styles`)
       //maybe data.data.results
       .then((data) => data.data)
       .catch((err) => console.error(err))
@@ -27,14 +29,14 @@ const getProductStyles = (id) => {
 //List Reviews
 const getReviewsForProduct = (productId) => {
   return axios
-    .get(`http://18.224.37.110/reviews?product_id=${productId}&count=10000`)
+    .get(`${server}/reviews?product_id=${productId}&count=10000`)
     .then(({ data }) => data.results)
     .catch((err) => console.error(err));
 };
 //Get Review Metadata
 const getReviewMetadataForProduct = (productId) => {
   return axios
-    .get(`http://18.224.37.110/reviews/meta?product_id=${productId}`)
+    .get(`${server}/reviews/meta?product_id=${productId}`)
     .then(({ data }) => data)
     .catch((err) => console.error(err));
 };
@@ -54,19 +56,19 @@ This API call takes Body Parameters:
 | characteristics | object | Object of keys representing characteristic_id and values representing the review value for that characteristic.
 */
 const addReview = (reviewObj) => {
-  return axios.post(`http://18.224.37.110/reviews`, reviewObj);
+  return axios.post(`${server}/reviews`, reviewObj);
 };
 //Mark Review as Helpful
 const markReviewHelpful = (reviewId) => {
-  return axios.put(`http://18.224.37.110/reviews/${reviewId}/helpful`);
+  return axios.put(`${server}/reviews/${reviewId}/helpful`);
 };
 //Updates a review to show it was reported.
 const reportReview = (reviewId) => {
-  return axios.put(`http://18.224.37.110/reviews/${reviewId}/report`);
+  return axios.put(`${server}/reviews/${reviewId}/report`);
 };
 
 const logInteraction = (element, widget, time) => {
-  return axios.post(`http://18.224.37.110/interactions`, {
+  return axios.post(`${server}/interactions`, {
     element,
     widget,
     time,

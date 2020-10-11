@@ -1,4 +1,4 @@
-import React, { PureComponent, useEffect, useRef, useState } from 'react';
+import React from 'react';
 import './styles.css';
 
 const Filler = (props) => {
